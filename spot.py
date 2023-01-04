@@ -2,6 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import json
 import lyricsgenius
+import translators as ts
 
 configFile = open("config.json")
 
@@ -25,3 +26,5 @@ print(artist.songs)
 
 song = genius.search_song("Breath", artist.name)
 print(song.lyrics)
+
+print(ts.translate_text(song.lyrics, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000))
