@@ -14,14 +14,14 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=config["cli
 
 genius = lyricsgenius.Genius(config["lyricsAccessToken"])
 
-results = sp.search(q='weezer', limit=20)
+results = sp.search(q='weezer', limit=5)
 for idx, track in enumerate(results['tracks']['items']):
     print(idx, track['name'])
 
 print("-------------LYRICS-------------------")
 
-artist = genius.search_artist("Andy Shauf", max_songs=3, sort="title", include_features=True)
+artist = genius.search_artist("Sam Kim", max_songs=3, sort="title", include_features=True)
 print(artist.songs)
 
-song = genius.search_song("Angela", artist.name)
+song = genius.search_song("Breath", artist.name)
 print(song.lyrics)
