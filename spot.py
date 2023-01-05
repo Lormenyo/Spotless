@@ -4,7 +4,9 @@ import json
 import lyricsgenius
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
-
+# can use https://pythonhosted.org/doodle-translate/intro.html for 
+# translation but the installation is not working
+# it also has romanization and can detect other languages
 
 configFile = open("config.json")
 
