@@ -24,27 +24,19 @@ print("-------------LYRICS-------------------")
 artist = genius.search_artist("Sam Kim", max_songs=3, sort="title", include_features=True)
 print(artist.songs)
 
-song = genius.search_song("Breath", artist.name)
+song = genius.search_song("Breath", "Sam Kim")
 lyrics = song.lyrics
+print(lyrics)
 
 translation = ts.translate_text(song.lyrics,from_language='ko', to_language='en', if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
 
-lyrisList = lyrics.split("\n\n")
-translationList = translation.split("\n\n")
 
-for l in lyrisList:
-    for t in translationList:
-        print(l)
-        print("-----")
-        print(t)
-        print("\n")
-
-# print(lyrislist)
-# print(len(lyrislist))
 
 class SpotifySong:
-    def __init__(self, songName) -> None:
+    def __init__(self, songName, artistName) -> None:
         self.songName = songName
+        self.artist = genius.search_artist(artistName, max_songs=1, sort="title", include_features=True)
+        self.song = genius.search_song(songName, self.artist.name)
 
     def getSongArtist():
         return
