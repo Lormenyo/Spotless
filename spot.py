@@ -38,18 +38,18 @@ class SpotifySong:
         self.artist = genius.search_artist(artistName, max_songs=1, sort="title", include_features=True)
         self.song = genius.search_song(songName, self.artist.name)
 
-    def getSongArtist():
+    def getSongArtist(self,):
         return
 
-    def getSongLyrics():
+    def getSongLyrics(self,):
         return
 
-    def getFullSongTranslation(fromLang, toLang):
-        return ts.translate_text(song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
+    def getFullSongTranslation(self,fromLang, toLang):
+        return ts.translate_text(self.song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
 
 
-    def getLyricsAndTranslation(fromLang, toLang):
-        translation = ts.translate_text(song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
+    def getLyricsAndTranslation(self,fromLang, toLang):
+        translation = ts.translate_text(self.song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
 
         lyrisList = lyrics.split("\n\n")
         translationList = translation.split("\n\n")
@@ -64,5 +64,5 @@ class SpotifySong:
                 print("\n")
         return
 
-    def getSongRomanization():
+    def getSongRomanization(self,):
         return 
