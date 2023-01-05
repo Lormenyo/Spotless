@@ -39,10 +39,10 @@ class SpotifySong:
         self.song = genius.search_song(songName, self.artist.name)
 
     def getSongArtist(self,):
-        return
+        return self.artist.name
 
     def getSongLyrics(self,):
-        return
+        return self.song.lyrics
 
     def getFullSongTranslation(self,fromLang, toLang):
         return ts.translate_text(self.song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
