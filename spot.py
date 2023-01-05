@@ -53,7 +53,8 @@ class SpotifySong:
         return
 
     def getFullSongTranslation(fromLang, toLang):
-        return
+        return ts.translate_text(song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
+
 
     def getLyricsAndTranslation(fromLang, toLang):
         translation = ts.translate_text(song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
