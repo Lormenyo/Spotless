@@ -56,6 +56,19 @@ class SpotifySong:
         return
 
     def getLyricsAndTranslation(fromLang, toLang):
+        translation = ts.translate_text(song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
+
+        lyrisList = lyrics.split("\n\n")
+        translationList = translation.split("\n\n")
+        lyrisList = lyrics.split("\n\n")
+        translationList = translation.split("\n\n")
+
+        for l in lyrisList:
+            for t in translationList:
+                print(l)
+                print("-----")
+                print(t)
+                print("\n")
         return
 
     def getSongRomanization():
