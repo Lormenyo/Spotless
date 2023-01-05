@@ -5,9 +5,6 @@ import lyricsgenius
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
 
-# r = Romanizer("안녕하세요")
-# r.romanize() 
-# returns 'annyeonghaseyo'
 
 configFile = open("config.json")
 
@@ -31,7 +28,10 @@ print(artist.songs)
 
 song = genius.search_song("Breath", "Sam Kim")
 lyrics = song.lyrics
-print(lyrics)
+# print(lyrics)
+r = Romanizer(lyrics)
+print(r.romanize())
+# returns 'annyeonghaseyo'
 
 translation = ts.translate_text(song.lyrics,from_language='ko', to_language='en', if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
 
