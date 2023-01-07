@@ -4,15 +4,16 @@ import json
 import lyricsgenius
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
+
+# this one is based on python 2, so not pretty nice
 # can use https://pythonhosted.org/doodle-translate/intro.html for 
 # translation but the installation is not working
 # it also has romanization and can detect other languages
 
-from googletrans import Translator
+#this one is based on python 3, not so good either
+# https://pypi.org/project/googletrans/
+#from googletrans import Translator
 
-translator = Translator()
-
-print(translator.translate("hello world", "french"))
 
 configFile = open("config.json")
 
@@ -62,12 +63,16 @@ class SpotifySong:
 
 
     def getLyricsAndTranslation(self,fromLang, toLang):
-        translations = translator.translate(self.song.lyrics.split("\n"), dest=toLang)
+        lineLyrics = self.song.lyrics.split("\n")
 
-        for translation in translations:
-            print(translation.origin, '->', translation.text)
+        for line in lineLyrics:
+            print(lineLyrics, '->', ts.translate_text(line,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000))
         return
 
-    def getSongRomanization(self):
+    def getKoreanSongRomanization(self):
         r = Romanizer(self.getSongLyrics())
         return r.romanize()
+
+    def getLanguage(self):
+        return
+        
