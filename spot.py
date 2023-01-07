@@ -8,6 +8,12 @@ from korean_romanizer.romanizer import Romanizer
 # translation but the installation is not working
 # it also has romanization and can detect other languages
 
+from googletrans import Translator
+
+translator = Translator()
+
+print(translator.translate("hello world", "french"))
+
 configFile = open("config.json")
 
 config = json.load(configFile)
@@ -56,19 +62,10 @@ class SpotifySong:
 
 
     def getLyricsAndTranslation(self,fromLang, toLang):
-        translation = ts.translate_text(self.song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
+        translations = translator.translate(self.song.lyrics.split("\n"), dest=toLang)
 
-        lyrisList = lyrics.split("\n\n")
-        translationList = translation.split("\n\n")
-        lyrisList = lyrics.split("\n\n")
-        translationList = translation.split("\n\n")
-
-        for l in lyrisList:
-            for t in translationList:
-                print(l)
-                print("-----")
-                print(t)
-                print("\n")
+        for translation in translations:
+            print(translation.origin, '->', translation.text)
         return
 
     def getSongRomanization(self):
