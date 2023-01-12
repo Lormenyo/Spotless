@@ -26,6 +26,8 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=config["cli
 
 genius = lyricsgenius.Genius(config["lyricsAccessToken"])
 
+# sp.start_playback() Premium is required for playback
+
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
@@ -51,12 +53,17 @@ class SpotifySong:
         return
 
     def getKoreanSongRomanization(self):
-        r = Romanizer(self.getSongLyrics())
-        return r.romanize()
+        lineLyrics = self.song.lyrics.split("\n")
+        
+        for line in lineLyrics:
+            print(line, '->', Romanizer(line).romanize())
+
+        return 
 
     def getLanguage(self):
         return
         
 
 song = SpotifySong(songName='Breath', artistName='Sam Kim')
-song.getLyricsAndTranslation('ko', 'en')
+#song.getLyricsAndTranslation('ko', 'en')
+song.getKoreanSongRomanization()
