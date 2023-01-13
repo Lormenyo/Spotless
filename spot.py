@@ -4,6 +4,7 @@ import json
 import lyricsgenius
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
+import pprint
 
 # this one is based on python 2, so not pretty nice
 # can use https://pythonhosted.org/doodle-translate/intro.html for 
@@ -26,6 +27,9 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=config["cli
 
 genius = lyricsgenius.Genius(config["lyricsAccessToken"])
 
+ser = sp.search('Shape of you', limit=1, offset=0, type='track', market=None)
+pprint.pprint(ser)
+
 # sp.start_playback() Premium is required for playback
 
 
@@ -34,6 +38,7 @@ class SpotifySong:
         self.songName = songName
         self.artist = genius.search_artist(artistName, max_songs=1, sort="title", include_features=True)
         self.song = genius.search_song(songName, self.artist.name)
+        print(self.song.url)
 
     def getSongArtist(self,):
         return self.artist.name
@@ -66,4 +71,4 @@ class SpotifySong:
 
 song = SpotifySong(songName='Breath', artistName='Sam Kim')
 #song.getLyricsAndTranslation('ko', 'en')
-song.getKoreanSongRomanization()
+# song.getKoreanSongRomanization()
