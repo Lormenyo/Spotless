@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:spotless/ui/theme/theme.dart';
+
+import 'controllers/app_theme_controller.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider<AppThemeNotifier>(
+        create: (context) => AppThemeNotifier(),
+      ),
+    ], child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -9,14 +19,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Spotless ',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Spotless'),
-    );
+    return Consumer<AppThemeNotifier>(builder: (context, appstate, _) {
+      return MaterialApp(
+        title: 'Spotless ',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.buildLightTheme(),
+        darkTheme: AppTheme.buildDarkTheme(),
+        themeMode: appstate.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+        home: const MyHomePage(title: 'Spotless'),
+      );
+    });
   }
 }
 

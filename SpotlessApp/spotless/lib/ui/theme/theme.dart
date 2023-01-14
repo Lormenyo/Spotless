@@ -13,7 +13,7 @@ class AppTheme {
         scaffoldBackgroundColor: AppColors.spotlessGreyBg,
         appBarTheme: const AppBarTheme(
           elevation: 0,
-          color: Colors.transparent,
+          color: Colors.blueAccent,
           iconTheme: IconThemeData(color: Colors.black, size: 30),
         ),
         primaryIconTheme: const IconThemeData(color: Colors.black),
