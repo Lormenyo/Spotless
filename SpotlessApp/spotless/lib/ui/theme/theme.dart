@@ -19,9 +19,9 @@ class AppTheme {
         primaryIconTheme: const IconThemeData(color: Colors.black),
         // elevatedButtonTheme: ElevatedButtonThemeData(),
         colorScheme: const ColorScheme.light(
-          primary: Color(0xFF122F3A),
+          primary: Colors.white,
           onPrimary: Colors.white,
-          secondary: Color(0xFF8E8E93),
+          secondary: Color(0xFF9570FF),
           onBackground: Color(0xFF122F3A),
         ),
         cardTheme: const CardTheme(
