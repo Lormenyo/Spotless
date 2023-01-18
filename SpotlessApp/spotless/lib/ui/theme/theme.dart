@@ -10,7 +10,7 @@ class AppTheme {
     final ThemeData lightTheme = ThemeData.light();
     return lightTheme.copyWith(
         disabledColor: Colors.grey[300],
-        scaffoldBackgroundColor: AppColors.spotlessGreyBg,
+        scaffoldBackgroundColor: AppColors.spotlessWhite,
         appBarTheme: const AppBarTheme(
           elevation: 0,
           color: Colors.blueAccent,
@@ -46,7 +46,7 @@ class AppTheme {
     final ThemeData darkTheme = ThemeData.dark();
     return darkTheme.copyWith(
         disabledColor: Colors.grey[300],
-        scaffoldBackgroundColor: AppColors.spotlessDarkBg,
+        scaffoldBackgroundColor: AppColors.spotlessGray6,
         appBarTheme: const AppBarTheme(
           elevation: 0,
           color: Colors.transparent,
