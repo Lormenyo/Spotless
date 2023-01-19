@@ -7,51 +7,56 @@ TextTheme spotlessLightTextTheme(TextTheme base) {
         headline1: base.headline1!.copyWith(
           fontSize: 32.0,
           height: 1.25,
-          fontFamily: 'Satoshi',
-          fontWeight: FontWeight.w300,
+          fontFamily: 'Metropolis',
+          fontWeight: FontWeight.w700,
         ),
         headline2: base.headline2!.copyWith(
           fontSize: 20.0,
           height: 1.2,
-          fontFamily: 'Satoshi',
+          fontFamily: 'Metropolis',
+          fontWeight: FontWeight.w600,
         ),
         headline3: base.headline3!.copyWith(
           fontSize: 16.0,
           height: 1.125,
-          fontFamily: 'Satoshi',
+          fontFamily: 'Metropolis',
+          fontWeight: FontWeight.w500,
         ),
         headline4: base.headline4!.copyWith(
           fontSize: 14.0,
           height: 1.14,
-          fontFamily: 'Satoshi',
+          fontFamily: 'Metropolis',
+          fontWeight: FontWeight.w600,
         ),
         subtitle1: base.headline3!.copyWith(
           fontSize: 14.0,
           height: 1.2,
-          fontFamily: 'Satoshi',
+          fontFamily: 'Metropolis',
         ),
         bodyText1: base.bodyText1!.copyWith(
           fontSize: 14.0,
           height: 1.2,
-          fontFamily: 'Satoshi',
+          fontFamily: 'Metropolis',
+          fontWeight: FontWeight.w400,
         ),
         bodyText2: base.bodyText2!.copyWith(
           fontSize: 12.0,
           height: 1.17,
-          fontFamily: 'Satoshi',
+          fontFamily: 'Metropolis',
+          fontWeight: FontWeight.w200,
         ),
         button: base.button!.copyWith(
           fontSize: 14.0,
           height: 1.2,
-          fontFamily: 'Satoshi',
+          fontFamily: 'Metropolis',
         ),
         caption: base.caption!.copyWith(
           fontSize: 10.0,
           height: 1.2,
-          fontFamily: 'Satoshi',
+          fontFamily: 'Metropolis',
         ),
         overline: base.overline!
-            .copyWith(fontWeight: FontWeight.normal, fontFamily: 'Satoshi'),
+            .copyWith(fontWeight: FontWeight.normal, fontFamily: 'Metropolis'),
       )
       .apply(
         displayColor: AppColors.spotlessBlack,
@@ -60,43 +65,43 @@ TextTheme spotlessLightTextTheme(TextTheme base) {
 }
 
 extension CustomspotlessText on TextTheme {
-  TextStyle get spotlessTitle900 {
+  TextStyle get spotlessText700 {
     return const TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w700,
-      fontFamily: 'Satoshi',
+      fontFamily: 'Metropolis',
     );
   }
 
-  TextStyle get spotlessTitle700 {
+  TextStyle get spotlessText600 {
     return const TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.w700,
-      fontFamily: 'Satoshi',
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Metropolis',
     );
   }
 
-  TextStyle get spotlessTitle500 {
+  TextStyle get spotlessText500 {
     return const TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w500,
-      fontFamily: 'Satoshi',
+      fontFamily: 'Metropolis',
     );
   }
 
-  TextStyle get spotlessBody100 {
+  TextStyle get spotlessText400 {
     return const TextStyle(
       fontSize: 12,
-      fontWeight: FontWeight.normal,
-      fontFamily: 'Satoshi',
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Metropolis',
     );
   }
 
-  TextStyle get spotlessBody700 {
+  TextStyle get spotlessText200 {
     return const TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.normal,
-      fontFamily: 'Satoshi',
+      fontWeight: FontWeight.w200,
+      fontFamily: 'Metropolis',
     );
   }
 }
