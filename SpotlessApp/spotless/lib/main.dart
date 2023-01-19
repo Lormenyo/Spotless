@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:spotless/ui/screens/home.dart';
 import 'package:spotless/ui/theme/theme.dart';
 
 import 'controllers/app_theme_controller.dart';
@@ -26,37 +27,8 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.buildLightTheme(),
         darkTheme: AppTheme.buildDarkTheme(),
         themeMode: appstate.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-        home: const MyHomePage(title: 'Spotless'),
+        home: const Home(title: 'Spotless'),
       );
     });
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Home page',
-            )
-          ],
-        ),
-      ),
-    );
   }
 }
