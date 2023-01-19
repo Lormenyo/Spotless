@@ -3,21 +3,36 @@ import 'package:spotless/data/models/music.dart';
 
 class SquareMusicCard extends StatelessWidget {
   // art_url, title, artist, genre
-  const SquareMusicCard({Key? key, required Music music}) : super(key: key);
+  final Music music;
+  const SquareMusicCard({Key? key, required this.music}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+      height: 70,
+      width: 100,
+      child: Stack(
+        children: [Container(), Container()],
+      ),
+    );
   }
 }
 
 class RectangularMusicCard extends StatelessWidget {
   // art_url, title, artist, genre
-  const RectangularMusicCard({Key? key, required Music music})
-      : super(key: key);
+  final Music music;
+  const RectangularMusicCard({Key? key, required this.music}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+      height: 70,
+      width: 100,
+      child: ListTile(
+        leading: const CircleAvatar(),
+        title: Text(music.artistName),
+        subtitle: Text(music.title),
+      ),
+    );
   }
 }
