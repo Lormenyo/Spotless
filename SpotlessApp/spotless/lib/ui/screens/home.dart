@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
@@ -14,10 +13,9 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -35,7 +33,8 @@ class _HomeState extends State<Home> {
   }
 
   Widget getSearchBar() {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.all(20.0),
       width: MediaQuery.of(context).size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,14 +50,17 @@ class _HomeState extends State<Home> {
   }
 
   Widget getPageTitle() {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.only(left: 20.0),
       width: MediaQuery.of(context).size.width,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(width: 50, child: const Text('Find the best music for you')),
+          const SizedBox(
+              width: 100, child: Text('Find the best music for you')),
           SizedBox(
               width: 100,
-              child: SvgPicture.asset('assets/icons/hand-point-right.svg'))
+              child: Image.asset('assets/images/hand-point-right.png'))
         ],
       ),
     );
