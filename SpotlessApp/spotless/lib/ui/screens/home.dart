@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
               getSearchBar(),
               getPageTitle(),
               getDiscover(),
+              getNewRelease()
             ],
           ),
         ),
@@ -73,6 +74,17 @@ class _HomeState extends State<Home> {
       child: Column(
         children: const [
           Text('Discover'),
+        ],
+      ),
+    );
+  }
+
+  Widget getNewRelease() {
+    return Container(
+      padding: const EdgeInsets.all(20.00),
+      child: Column(
+        children: const [
+          Text('New Release'),
         ],
       ),
     );
