@@ -24,7 +24,8 @@ class _HomeState extends State<Home> {
                 height: 50,
               ),
               getSearchBar(),
-              getPageTitle()
+              getPageTitle(),
+              getDiscover(),
             ],
           ),
         ),
@@ -61,6 +62,17 @@ class _HomeState extends State<Home> {
           SizedBox(
               width: 100,
               child: Image.asset('assets/images/hand-point-right.png'))
+        ],
+      ),
+    );
+  }
+
+  Widget getDiscover() {
+    return Container(
+      padding: const EdgeInsets.all(20.00),
+      child: Column(
+        children: const [
+          Text('Discover'),
         ],
       ),
     );
