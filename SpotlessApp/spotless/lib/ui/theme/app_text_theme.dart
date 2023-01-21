@@ -11,22 +11,22 @@ TextTheme spotlessLightTextTheme(TextTheme base) {
           fontWeight: FontWeight.w700,
         ),
         headline2: base.headline2!.copyWith(
-          fontSize: 20.0,
-          height: 1.2,
+          fontSize: 28.0,
+          height: 1.25,
           fontFamily: 'Metropolis',
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w700,
         ),
         headline3: base.headline3!.copyWith(
           fontSize: 16.0,
           height: 1.125,
           fontFamily: 'Metropolis',
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w700,
         ),
         headline4: base.headline4!.copyWith(
           fontSize: 14.0,
           height: 1.14,
           fontFamily: 'Metropolis',
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w700,
         ),
         subtitle1: base.headline3!.copyWith(
           fontSize: 14.0,

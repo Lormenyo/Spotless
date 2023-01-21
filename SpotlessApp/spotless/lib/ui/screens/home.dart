@@ -58,8 +58,12 @@ class _HomeState extends State<Home> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(
-              width: 100, child: Text('Find the best music for you')),
+          SizedBox(
+              width: 270,
+              child: Text(
+                'Find the best music for you',
+                style: Theme.of(context).textTheme.headline1,
+              )),
           SizedBox(
               width: 100,
               child: Image.asset('assets/images/hand-point-right.png'))
@@ -72,8 +76,11 @@ class _HomeState extends State<Home> {
     return Container(
       padding: const EdgeInsets.all(20.00),
       child: Column(
-        children: const [
-          Text('Discover'),
+        children: [
+          Text(
+            'Discover',
+            style: Theme.of(context).textTheme.headline2,
+          ),
         ],
       ),
     );
@@ -83,8 +90,11 @@ class _HomeState extends State<Home> {
     return Container(
       padding: const EdgeInsets.all(20.00),
       child: Column(
-        children: const [
-          Text('New Release'),
+        children: [
+          Text(
+            'New Release',
+            style: Theme.of(context).textTheme.headline2,
+          ),
         ],
       ),
     );
