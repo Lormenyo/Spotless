@@ -19,9 +19,11 @@ class AppColors {
 
   static const spotlessPurple2 = Color(0xFFBB6BD9);
 
+  static const spotlessPurple3 = Color.fromRGBO(149, 112, 255, 0.19);
+
   static const spotlessRed = Color(0xFFEB5757);
 
-  static const spotlessPurple = Color(0xFFC85CE3);
+  static const spotlessBrown = Color.fromRGBO(198, 125, 15, 0.19);
 
   static const spotlessWhite = Color(0xFFFFFFFF);
 

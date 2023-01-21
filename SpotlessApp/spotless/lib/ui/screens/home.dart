@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:spotless/ui/theme/app_colors.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
@@ -40,11 +42,13 @@ class _HomeState extends State<Home> {
       width: MediaQuery.of(context).size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          CircleAvatar(),
+        children: [
+          const CircleAvatar(
+            backgroundColor: AppColors.spotlessBrown,
+          ),
           CircleAvatar(
-            backgroundColor: Colors.blue,
-            child: Icon(Icons.search),
+            backgroundColor: AppColors.spotlessPurple3,
+            child: SvgPicture.asset('assets/icons/search.svg'),
           )
         ],
       ),
