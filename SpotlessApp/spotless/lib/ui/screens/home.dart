@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 
 class Home extends StatefulWidget {
@@ -48,7 +49,7 @@ class _HomeState extends State<Home> {
           ),
           CircleAvatar(
             backgroundColor: AppColors.spotlessPurple3,
-            child: SvgPicture.asset('assets/icons/search.svg'),
+            child: SvgPicture.asset(kSearchIcon),
           )
         ],
       ),
@@ -68,9 +69,7 @@ class _HomeState extends State<Home> {
                 'Find the best music for you',
                 style: Theme.of(context).textTheme.headline1,
               )),
-          SizedBox(
-              width: 100,
-              child: Image.asset('assets/images/hand-point-right.png'))
+          SizedBox(width: 100, child: Image.asset(kRightHandPoint))
         ],
       ),
     );
