@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
+import 'package:spotless/ui/theme/app_colors.dart';
 
 class SquareMusicCard extends StatelessWidget {
   // art_url, title, artist, genre
@@ -37,13 +38,19 @@ class RectangularMusicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 70,
-      width: 100,
+    return Container(
+      padding: const EdgeInsets.all(5.0),
+      height: 65,
+      width: 179,
       child: ListTile(
-        leading: const CircleAvatar(),
+        tileColor: AppColors.spotlessPurple3,
+        leading: CircleAvatar(
+          child: Image.asset(music.artistImage),
+        ),
         title: Text(music.artistName),
         subtitle: Text(music.title),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0))),
       ),
     );
   }

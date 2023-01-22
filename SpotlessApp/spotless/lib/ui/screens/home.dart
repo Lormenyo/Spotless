@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
@@ -19,7 +20,8 @@ class _HomeState extends State<Home> {
         artUrl: kCoverArt,
         title: "Pipe Dreams",
         genre: "Pop",
-        artistName: "IMRSQD")
+        artistName: "IMRSQD",
+        artistImage: kProfileImage)
   ];
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class _HomeState extends State<Home> {
               ),
               getSearchBar(),
               getPageTitle(),
+              getTopSongs(),
               getDiscover(),
               getNewRelease()
             ],
@@ -111,7 +114,8 @@ class _HomeState extends State<Home> {
                           artUrl: kCoverArt,
                           title: "Pipe Dreams",
                           genre: "Pop",
-                          artistName: "IMRSQD"))),
+                          artistName: "IMRSQD",
+                          artistImage: kProfileImage))),
             ),
           )
         ],
@@ -145,10 +149,31 @@ class _HomeState extends State<Home> {
                           artUrl: kCoverArt,
                           title: "Pipe Dreams",
                           genre: "Pop",
-                          artistName: "IMRSQD"))),
+                          artistName: "IMRSQD",
+                          artistImage: kProfileImage))),
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Widget getTopSongs() {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      width: MediaQuery.of(context).size.width,
+      height: 100,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: List.generate(
+            5,
+            (index) => RectangularMusicCard(
+                music: Music(
+                    artUrl: kCoverArt,
+                    artistName: 'Hannah',
+                    genre: 'Pop',
+                    title: 'Rain',
+                    artistImage: kProfileImage))),
       ),
     );
   }
