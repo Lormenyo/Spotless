@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotless/data/models/music.dart';
+import 'package:spotless/ui/theme/app_assets.dart';
 
 class SquareMusicCard extends StatelessWidget {
   // art_url, title, artist, genre
@@ -8,11 +9,22 @@ class SquareMusicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 70,
-      width: 100,
+    return Container(
+      height: 145,
+      width: 150,
+      padding: const EdgeInsets.all(5.0),
       child: Stack(
-        children: [Container(), Container()],
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(kCoverArt), fit: BoxFit.cover),
+                borderRadius: BorderRadius.all(Radius.circular(30.0))),
+          ),
+          Container()
+        ],
       ),
     );
   }

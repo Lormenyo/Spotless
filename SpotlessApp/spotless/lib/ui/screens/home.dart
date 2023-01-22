@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
+import 'package:spotless/ui/widgets/music_card.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
@@ -12,6 +14,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List songs = [
+    Music(
+        artUrl: kCoverArt,
+        title: "Pipe Dreams",
+        genre: "Pop",
+        artistName: "IMRSQD")
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +53,9 @@ class _HomeState extends State<Home> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             backgroundColor: AppColors.spotlessBrown,
+            child: Image.asset(kProfileImage),
           ),
           CircleAvatar(
             backgroundColor: AppColors.spotlessPurple3,
@@ -92,12 +102,31 @@ class _HomeState extends State<Home> {
   Widget getNewRelease() {
     return Container(
       padding: const EdgeInsets.all(20.00),
+      width: MediaQuery.of(context).size.width,
+      height: 250,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
             'New Release',
             style: Theme.of(context).textTheme.headline2,
+            textAlign: TextAlign.left,
           ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 150,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: List.generate(
+                  5,
+                  (index) => SquareMusicCard(
+                      music: Music(
+                          artUrl: kCoverArt,
+                          title: "Pipe Dreams",
+                          genre: "Pop",
+                          artistName: "IMRSQD"))),
+            ),
+          )
         ],
       ),
     );
