@@ -88,12 +88,32 @@ class _HomeState extends State<Home> {
   Widget getDiscover() {
     return Container(
       padding: const EdgeInsets.all(20.00),
+      width: MediaQuery.of(context).size.width,
+      height: 250,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Discover',
             style: Theme.of(context).textTheme.headline2,
+            textAlign: TextAlign.left,
           ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 150,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: List.generate(
+                  5,
+                  (index) => SquareMusicCard(
+                      music: Music(
+                          artUrl: kCoverArt,
+                          title: "Pipe Dreams",
+                          genre: "Pop",
+                          artistName: "IMRSQD"))),
+            ),
+          )
         ],
       ),
     );
@@ -106,6 +126,7 @@ class _HomeState extends State<Home> {
       height: 250,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'New Release',
