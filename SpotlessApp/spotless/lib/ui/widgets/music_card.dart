@@ -24,7 +24,18 @@ class SquareMusicCard extends StatelessWidget {
                     image: AssetImage(kCoverArt), fit: BoxFit.cover),
                 borderRadius: BorderRadius.all(Radius.circular(30.0))),
           ),
-          Container()
+          Positioned(
+            bottom: 0,
+            left: 5,
+            right: 5,
+            child: Container(
+              height: 70,
+              width: 120,
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            ),
+          )
         ],
       ),
     );
