@@ -29,7 +29,7 @@ class SquareMusicCard extends StatelessWidget {
             left: 5,
             right: 5,
             child: Container(
-              height: 70,
+              height: 52,
               width: 120,
               padding: const EdgeInsets.all(10.0),
               decoration: const BoxDecoration(
