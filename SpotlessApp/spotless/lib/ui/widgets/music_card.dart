@@ -79,7 +79,10 @@ class RectangularMusicCard extends StatelessWidget {
         leading: CircleAvatar(
           child: Image.asset(music.artistImage),
         ),
-        title: Text(music.artistName),
+        title: Text(
+          music.artistName,
+          style: Theme.of(context).textTheme.headline3,
+        ),
         subtitle: Text(music.title),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(15.0))),
