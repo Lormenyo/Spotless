@@ -53,7 +53,16 @@ class SquareMusicCard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Text(music.title), Text(music.genre)],
+                children: [
+                  Text(
+                    music.title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline3
+                        ?.copyWith(color: Colors.white),
+                  ),
+                  Text(music.genre)
+                ],
               ),
             ),
           )
