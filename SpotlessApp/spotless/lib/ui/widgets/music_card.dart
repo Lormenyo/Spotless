@@ -27,12 +27,13 @@ class SquareMusicCard extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(30.0))),
           ),
           Positioned(
-              bottom: 0,
-              left: 5,
+              bottom: 0.4,
+              left: 7,
               // right: 5,
-              width: 120,
-              height: 52,
-              child: ClipRect(
+              width: 126,
+              height: 53,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(17),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                   child: Container(
