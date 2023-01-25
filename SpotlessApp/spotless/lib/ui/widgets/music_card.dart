@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
@@ -25,6 +27,20 @@ class SquareMusicCard extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(30.0))),
           ),
           Positioned(
+              bottom: 0,
+              left: 5,
+              // right: 5,
+              width: 120,
+              height: 52,
+              child: ClipRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                  child: Container(
+                    color: Colors.grey.withOpacity(0.28),
+                  ),
+                ),
+              )),
+          Positioned(
             bottom: 0,
             left: 5,
             right: 5,
@@ -38,17 +54,19 @@ class SquareMusicCard extends StatelessWidget {
                     Radius.circular(10.0),
                   ),
                   gradient: LinearGradient(
+                    begin: FractionalOffset.topLeft,
+                    end: FractionalOffset.bottomRight,
                     colors: [
                       Color.fromRGBO(
                         255,
                         255,
                         255,
-                        1.0,
+                        0.28,
                       ),
                       Color.fromRGBO(255, 255, 255, 0.62),
-                      Color.fromRGBO(255, 255, 255, 0.28)
+                      Color.fromRGBO(255, 255, 255, 1.0)
                     ],
-                    stops: [0.0, 0.5, 1.0],
+                    stops: [1.0, 0.5, 0.0],
                   )),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -58,7 +76,7 @@ class SquareMusicCard extends StatelessWidget {
                     music.title,
                     style: Theme.of(context)
                         .textTheme
-                        .headline3
+                        .headline4
                         ?.copyWith(color: Colors.white),
                   ),
                   Text(music.genre)

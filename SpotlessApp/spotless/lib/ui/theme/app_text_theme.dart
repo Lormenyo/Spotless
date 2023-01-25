@@ -20,13 +20,13 @@ TextTheme spotlessLightTextTheme(TextTheme base) {
           fontSize: 16.0,
           height: 1.125,
           fontFamily: 'Metropolis',
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
         ),
         headline4: base.headline4!.copyWith(
           fontSize: 14.0,
           height: 1.14,
           fontFamily: 'Metropolis',
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w500,
         ),
         subtitle1: base.headline3!.copyWith(
           fontSize: 14.0,
