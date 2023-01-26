@@ -80,7 +80,13 @@ class SquareMusicCard extends StatelessWidget {
                         .headline4
                         ?.copyWith(color: Colors.white),
                   ),
-                  Text(music.genre)
+                  Text(
+                    music.genre,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4
+                        ?.copyWith(color: Colors.white),
+                  )
                 ],
               ),
             ),
