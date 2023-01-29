@@ -124,7 +124,13 @@ class RectangularMusicCard extends StatelessWidget {
             const SizedBox(
               width: 8,
             ),
-            Text(music.title),
+            Text(
+              music.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1
+                  ?.copyWith(color: AppColors.spotlessGray3),
+            ),
           ],
         ),
         shape: const RoundedRectangleBorder(
