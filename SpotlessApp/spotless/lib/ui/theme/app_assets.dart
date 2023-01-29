@@ -5,3 +5,5 @@ const kRightHandPoint = 'assets/images/hand-point-right.png';
 const kProfileImage = 'assets/images/profile.png';
 
 const kCoverArt = 'assets/images/cover-art.png';
+
+const kSmallPurpleMusic = 'assets/icons/music-purple.svg';

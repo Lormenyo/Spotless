@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
@@ -117,7 +118,15 @@ class RectangularMusicCard extends StatelessWidget {
           music.artistName,
           style: Theme.of(context).textTheme.headline3,
         ),
-        subtitle: Text(music.title),
+        subtitle: Row(
+          children: [
+            SvgPicture.asset(kSmallPurpleMusic),
+            const SizedBox(
+              width: 8,
+            ),
+            Text(music.title),
+          ],
+        ),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(15.0))),
       ),
