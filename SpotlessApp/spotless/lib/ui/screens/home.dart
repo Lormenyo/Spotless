@@ -14,14 +14,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List songs = [
-    Music(
-        artUrl: kCoverArt,
-        title: "Pipe Dreams",
-        genre: "Pop",
-        artistName: "IMRSQD",
-        artistImage: kProfileImage)
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
