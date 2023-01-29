@@ -102,6 +102,9 @@ class _HomeState extends State<Home> {
             style: Theme.of(context).textTheme.headline2,
             textAlign: TextAlign.left,
           ),
+          const SizedBox(
+            height: 10,
+          ),
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 150,
@@ -136,6 +139,9 @@ class _HomeState extends State<Home> {
             'New Release',
             style: Theme.of(context).textTheme.headline2,
             textAlign: TextAlign.left,
+          ),
+          const SizedBox(
+            height: 10,
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width,
