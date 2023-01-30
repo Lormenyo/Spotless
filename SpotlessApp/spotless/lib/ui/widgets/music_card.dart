@@ -105,12 +105,18 @@ class RectangularMusicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Color> tileColorList = [
+      AppColors.spotlessPurple3,
+      AppColors.spotlessGreen
+    ];
+    tileColorList.shuffle();
+
     return Container(
       padding: const EdgeInsets.all(5.0),
       height: 65,
       width: 179,
       child: ListTile(
-        tileColor: AppColors.spotlessPurple3,
+        tileColor: tileColorList.first,
         leading: CircleAvatar(
           child: Image.asset(music.artistImage),
         ),
