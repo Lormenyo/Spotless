@@ -29,7 +29,13 @@ class _HomeState extends State<Home> {
                 height: 50,
               ),
               getSearchBar(),
+              const SizedBox(
+                height: 10,
+              ),
               getPageTitle(),
+              const SizedBox(
+                height: 20,
+              ),
               getTopSongs(),
               getDiscover(),
               getNewRelease()
