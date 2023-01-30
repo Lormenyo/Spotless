@@ -29,6 +29,8 @@ class AppColors {
 
   static const spotlessBlack = Color(0xFF000000);
 
+  static const spotlessGreen = Color.fromRGBO(111, 207, 151, 0.1);
+
   static const spotlessDeepBlueGradient = [
     Color(0xff005C97),
     Color.fromRGBO(54, 55, 149, 1)
