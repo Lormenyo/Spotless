@@ -1,4 +1,3 @@
-import 'dart:js';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -12,15 +11,16 @@ class SquareMusicCard extends StatelessWidget {
   // art_url, title, artist, genre
   final Music music;
   const SquareMusicCard({Key? key, required this.music}) : super(key: key);
-  
-  void onSquareMusicCardPressed(Music music){
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NowPlaying(music: music)))
+
+  void onSquareMusicCardPressed(Music music, BuildContext context) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => NowPlaying(music: this.music)));
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => onSquareMusicCardPressed(music),
+      onTap: () => onSquareMusicCardPressed(music, context),
       child: Container(
         height: 145,
         width: 150,
