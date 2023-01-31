@@ -153,6 +153,21 @@ class NowPlayingMusicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+      width: 230.0,
+      height: 260.0,
+      child: Stack(
+        children: [
+          Container(
+            width: 230,
+            height: 260,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(music.artUrl), fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(30)),
+          )
+        ],
+      ),
+    );
   }
 }
