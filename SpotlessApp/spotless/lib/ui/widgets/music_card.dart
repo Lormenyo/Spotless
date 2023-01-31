@@ -145,3 +145,14 @@ class RectangularMusicCard extends StatelessWidget {
     );
   }
 }
+
+class NowPlayingMusicCard extends StatelessWidget {
+  final Music music;
+
+  const NowPlayingMusicCard({Key? key, required this.music}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
