@@ -31,7 +31,10 @@ class _NowPlayingState extends State<NowPlaying> {
 
   buildNowPlayingAppbar() {
     return AppBar(
-      title: const Text('Now Playing'),
+      title: Text(
+        'Now Playing',
+        style: Theme.of(context).textTheme.headline2,
+      ),
       backgroundColor: Colors.white,
     );
   }
