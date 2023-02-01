@@ -14,7 +14,7 @@ class _NowPlayingState extends State<NowPlaying> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: buildNowPlayingAppbar(),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -26,6 +26,13 @@ class _NowPlayingState extends State<NowPlaying> {
           ],
         ),
       ),
+    );
+  }
+
+  buildNowPlayingAppbar() {
+    return AppBar(
+      title: const Text('Now Playing'),
+      backgroundColor: Colors.white,
     );
   }
 }
