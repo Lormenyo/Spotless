@@ -22,6 +22,9 @@ class _NowPlayingState extends State<NowPlaying> {
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
+            const SizedBox(
+              height: 60,
+            ),
             NowPlayingMusicCard(
               music: widget.music,
             )
