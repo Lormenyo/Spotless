@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:spotless/data/models/music.dart';
+import 'package:spotless/ui/theme/app_colors.dart';
 import 'package:spotless/ui/widgets/music_card.dart';
 
 class NowPlaying extends StatefulWidget {
@@ -31,9 +33,18 @@ class _NowPlayingState extends State<NowPlaying> {
 
   buildNowPlayingAppbar() {
     return AppBar(
+      leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.arrow_back,
+            color: AppColors.spotlessPurple1,
+          )),
       title: Text(
         'Now Playing',
-        style: Theme.of(context).textTheme.headline2,
+        style: Theme.of(context)
+            .textTheme
+            .headline2
+            ?.copyWith(color: AppColors.spotlessPurple1),
       ),
       backgroundColor: Colors.white,
     );
