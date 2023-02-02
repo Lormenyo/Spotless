@@ -35,16 +35,19 @@ class _NowPlayingState extends State<NowPlaying> {
     return AppBar(
       leading: IconButton(
           onPressed: () {},
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.spotlessPurple1,
+          icon: const CircleAvatar(
+            backgroundColor: AppColors.spotlessPurple3,
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
           )),
       title: Text(
         'Now Playing',
         style: Theme.of(context)
             .textTheme
             .headline2
-            ?.copyWith(color: AppColors.spotlessPurple1),
+            ?.copyWith(color: Colors.black, fontSize: 25),
       ),
       backgroundColor: Colors.white,
     );
