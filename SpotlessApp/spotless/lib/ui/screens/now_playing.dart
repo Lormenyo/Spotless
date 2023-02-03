@@ -1,8 +1,12 @@
+import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 import 'package:spotless/ui/widgets/music_card.dart';
+import 'package:flutter/services.dart';
+import 'package:spotless/ui/widgets/just_audio_common.dart';
 
 class NowPlaying extends StatefulWidget {
   final Music music;
@@ -12,7 +16,20 @@ class NowPlaying extends StatefulWidget {
   State<NowPlaying> createState() => _NowPlayingState();
 }
 
-class _NowPlayingState extends State<NowPlaying> {
+class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
+  final _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    ambiguate(WidgetsBinding.instance)!.addObserver(this);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle());
+  }
+
+  Future<void> _init() async {
+    final session = await AudioSession.instance;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
