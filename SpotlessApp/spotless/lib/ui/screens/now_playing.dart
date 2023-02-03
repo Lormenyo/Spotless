@@ -28,6 +28,21 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
 
   Future<void> _init() async {
     final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.speech());
+
+    _audioPlayer.playbackEventStream.listen((event) {},
+        onError: (Object e, StackTrace stackTrace) {
+      print('A stream error occurred: $e');
+    });
+
+    // Try to load audio from a source and catch any errors.
+    try {
+      // AAC example: https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.aac
+      await _audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(
+          "https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3")));
+    } catch (e) {
+      print("Error loading audio source: $e");
+    }
   }
 
   @override
@@ -103,7 +118,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
                 .textTheme
                 .bodyText2
                 ?.copyWith(fontSize: 17, color: AppColors.spotlessGray3),
-          )
+          ),
         ],
       ),
     );
