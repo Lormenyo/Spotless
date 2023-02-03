@@ -39,7 +39,7 @@ class _NowPlayingState extends State<NowPlaying> {
   buildNowPlayingAppbar() {
     return AppBar(
       leading: IconButton(
-          onPressed: () {},
+          onPressed: onBackPressed,
           icon: const CircleAvatar(
             backgroundColor: AppColors.spotlessPurple3,
             child: Icon(
@@ -56,6 +56,10 @@ class _NowPlayingState extends State<NowPlaying> {
       ),
       backgroundColor: Colors.white,
     );
+  }
+
+  onBackPressed() {
+    Navigator.of(context).pop();
   }
 
   buildMusicSeekBar() {
