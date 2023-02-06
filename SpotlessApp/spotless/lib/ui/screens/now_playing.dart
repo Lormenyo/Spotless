@@ -27,6 +27,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
     super.initState();
     ambiguate(WidgetsBinding.instance)!.addObserver(this);
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle());
+    _init();
   }
 
   Future<void> _init() async {
