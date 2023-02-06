@@ -8,6 +8,7 @@ import 'package:spotless/ui/theme/app_colors.dart';
 import 'package:spotless/ui/widgets/music_card.dart';
 import 'package:flutter/services.dart';
 import 'package:spotless/ui/widgets/just_audio_common.dart';
+import 'package:spotless/ui/widgets/music_controls.dart';
 
 class NowPlaying extends StatefulWidget {
   final Music music;
@@ -43,6 +44,25 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
           "https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3")));
     } catch (e) {
       print("Error loading audio source: $e");
+    }
+  }
+
+  @override
+  void dispose() {
+    ambiguate(WidgetsBinding.instance)!.removeObserver(this);
+    // Release decoders and buffers back to the operating system making them
+    // available for other apps to use.
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      // Release the player's resources when not in use. We use "stop" so that
+      // if the app resumes later, it will still remember what position to
+      // resume from.
+      _audioPlayer.stop();
     }
   }
 
@@ -130,7 +150,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
                 .bodyText2
                 ?.copyWith(fontSize: 17, color: AppColors.spotlessGray3),
           ),
-          // ControlButtons(_player),
+
           // Display seek bar. Using StreamBuilder, this widget rebuilds
           // each time the position, buffered position or duration changes.
           StreamBuilder<PositionData>(
@@ -146,6 +166,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
               );
             },
           ),
+          ControlButtons(_audioPlayer),
         ],
       ),
     );
