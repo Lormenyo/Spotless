@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
+import 'package:spotless/ui/theme/app_colors.dart';
 // import 'package:spotless/ui/theme/app_colors.dart';
 // import 'package:spotless/ui/widgets/just_audio_common.dart';
 
@@ -64,7 +65,16 @@ class ControlButtons extends StatelessWidget {
               );
             } else if (processingState != ProcessingState.completed) {
               return IconButton(
-                icon: const Icon(Icons.pause),
+                icon: const CircleAvatar(
+                  backgroundImage: AssetImage(kCircularGradientBg),
+                  backgroundColor: Colors.transparent,
+                  radius: 30.5,
+                  child: Icon(
+                    Icons.pause,
+                    color: AppColors.spotlessBlack,
+                    size: 30,
+                  ),
+                ),
                 iconSize: 64.0,
                 onPressed: player.pause,
               );
