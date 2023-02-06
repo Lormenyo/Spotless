@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:spotless/data/models/music.dart';
+import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 import 'package:spotless/ui/widgets/music_card.dart';
 import 'package:flutter/services.dart';
@@ -128,6 +129,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
   buildMusicSeekBar() {
     return Container(
       padding: const EdgeInsets.all(20.0),
+      width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -166,7 +168,29 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
               );
             },
           ),
+
+          buildMusicControls()
+        ],
+      ),
+    );
+  }
+
+  buildMusicControls() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(kSkipPreviousButton),
+          const SizedBox(
+            width: 30,
+          ),
           ControlButtons(_audioPlayer),
+          const SizedBox(
+            width: 30,
+          ),
+          SvgPicture.asset(kSkipNextButton),
         ],
       ),
     );

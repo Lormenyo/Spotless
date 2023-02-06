@@ -11,3 +11,7 @@ const kSmallPurpleMusic = 'assets/icons/music-purple.svg';
 const kPlayButton = 'assets/icons/play.svg';
 
 const kCircularGradientBg = 'assets/images/circular-bg.png';
+
+const kSkipNextButton = 'assets/icons/skip-next.svg';
+
+const kSkipPreviousButton = 'assets/icons/skip-previous.svg';
