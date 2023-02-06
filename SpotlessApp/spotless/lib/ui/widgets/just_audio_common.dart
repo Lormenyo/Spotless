@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:spotless/ui/theme/app_colors.dart';
 
 class SeekBar extends StatefulWidget {
   final Duration duration;
@@ -70,8 +71,8 @@ class SeekBarState extends State<SeekBar> {
         ),
         SliderTheme(
           data: _sliderThemeData.copyWith(
-            inactiveTrackColor: Colors.transparent,
-          ),
+              inactiveTrackColor: Colors.transparent,
+              activeTrackColor: AppColors.spotlessPurple1),
           child: Slider(
             min: 0.0,
             max: widget.duration.inMilliseconds.toDouble(),

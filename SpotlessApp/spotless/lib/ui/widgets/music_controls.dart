@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
-import 'package:spotless/ui/theme/app_colors.dart';
-import 'package:spotless/ui/widgets/just_audio_common.dart';
+// import 'package:spotless/ui/theme/app_colors.dart';
+// import 'package:spotless/ui/widgets/just_audio_common.dart';
 
 class ControlButtons extends StatelessWidget {
   final AudioPlayer player;
