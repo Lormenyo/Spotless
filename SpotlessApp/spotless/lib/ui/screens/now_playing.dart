@@ -84,7 +84,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
       appBar: buildNowPlayingAppbar(),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        // height: MediaQuery.of(context).size.height,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -94,7 +94,8 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
             NowPlayingMusicCard(
               music: widget.music,
             ),
-            buildMusicSeekBar()
+            buildMusicSeekBar(),
+            buildLyricsSheet()
           ],
         ),
       ),
@@ -153,7 +154,9 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
                 .bodyText2
                 ?.copyWith(fontSize: 17, color: AppColors.spotlessGray3),
           ),
-
+          const SizedBox(
+            height: 40,
+          ),
           // Display seek bar. Using StreamBuilder, this widget rebuilds
           // each time the position, buffered position or duration changes.
           StreamBuilder<PositionData>(
@@ -170,7 +173,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
             },
           ),
 
-          buildMusicControls()
+          buildMusicControls(),
         ],
       ),
     );
@@ -193,6 +196,57 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
           ),
           SvgPicture.asset(kSkipNextButton),
         ],
+      ),
+    );
+  }
+
+  buildLyricsSheet() {
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          border: Border.all(
+            color: Colors.black,
+            width: 1.0,
+          ),
+        ),
+        width: MediaQuery.of(context).size.width,
+        child: DraggableScrollableSheet(
+            minChildSize: 0.25,
+            builder: ((context, scrollController) {
+              return SingleChildScrollView(
+                controller: scrollController,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SvgPicture.asset(kGreyMusicSign),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          'Lyrics',
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                        const Expanded(
+                          child: SizedBox(
+                            width: 50,
+                          ),
+                        ),
+                        Expanded(
+                            child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 22,
+                                child: SvgPicture.asset(kArrowUp)))
+                      ],
+                    )
+                  ],
+                ),
+              );
+            })),
       ),
     );
   }
