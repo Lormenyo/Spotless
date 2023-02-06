@@ -54,7 +54,9 @@ class ControlButtons extends StatelessWidget {
             } else if (playing != true) {
               return IconButton(
                 icon: CircleAvatar(
-                  backgroundColor: AppColors.spotlessPurple1,
+                  backgroundImage: const AssetImage(kCircularGradientBg),
+                  backgroundColor: Colors.transparent,
+                  radius: 30.5,
                   child: SvgPicture.asset(kPlayButton),
                 ),
                 iconSize: 64.0,

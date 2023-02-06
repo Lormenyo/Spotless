@@ -9,3 +9,5 @@ const kCoverArt = 'assets/images/cover-art.png';
 const kSmallPurpleMusic = 'assets/icons/music-purple.svg';
 
 const kPlayButton = 'assets/icons/play.svg';
+
+const kCircularGradientBg = 'assets/images/circular-bg.png';
