@@ -113,6 +113,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
               color: Colors.black,
             ),
           )),
+      centerTitle: true,
       title: Text(
         'Now Playing',
         style: Theme.of(context)
