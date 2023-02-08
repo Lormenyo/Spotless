@@ -21,25 +21,27 @@ class _HomeState extends State<Home> {
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              const SizedBox(
-                height: 50,
-              ),
-              getSearchBar(),
-              const SizedBox(
-                height: 10,
-              ),
-              getPageTitle(),
-              const SizedBox(
-                height: 20,
-              ),
-              getTopSongs(),
-              getDiscover(),
-              getNewRelease()
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                const SizedBox(
+                  height: 50,
+                ),
+                getSearchBar(),
+                const SizedBox(
+                  height: 10,
+                ),
+                getPageTitle(),
+                const SizedBox(
+                  height: 20,
+                ),
+                getTopSongs(),
+                getDiscover(),
+                getNewRelease()
+              ],
+            ),
           ),
         ),
       ),
