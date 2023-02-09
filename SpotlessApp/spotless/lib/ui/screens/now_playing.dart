@@ -206,45 +206,44 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
   }
 
   buildLyricsRow() {
-    return Expanded(
-      child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            border: Border.all(
-              color: Colors.black,
-              width: 1.0,
-            ),
+    return Container(
+        height: 100,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          border: Border.all(
+            color: Colors.black,
+            width: 1.0,
           ),
-          width: MediaQuery.of(context).size.width,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SvgPicture.asset(kGreyMusicSign),
-              const SizedBox(
-                width: 15,
+        ),
+        width: MediaQuery.of(context).size.width,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SvgPicture.asset(kGreyMusicSign),
+            const SizedBox(
+              width: 15,
+            ),
+            Text(
+              'Lyrics',
+              style: Theme.of(context).textTheme.headline2,
+            ),
+            const Expanded(
+              child: SizedBox(
+                width: 50,
               ),
-              Text(
-                'Lyrics',
-                style: Theme.of(context).textTheme.headline2,
-              ),
-              const Expanded(
-                child: SizedBox(
-                  width: 50,
-                ),
-              ),
-              Expanded(
-                  child: InkWell(
-                onTap: buildLyricsSheet,
-                child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 22,
-                    child: SvgPicture.asset(kArrowUp)),
-              ))
-            ],
-          )),
-    );
+            ),
+            Expanded(
+                child: InkWell(
+              onTap: buildLyricsSheet,
+              child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 22,
+                  child: SvgPicture.asset(kArrowUp)),
+            ))
+          ],
+        ));
   }
 
   buildLyricsSheet() {
