@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spotless/ui/screens/home.dart';
 import 'package:spotless/ui/theme/theme.dart';
-
 import 'controllers/app_theme_controller.dart';
 
 void main() {
