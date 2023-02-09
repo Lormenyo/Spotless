@@ -84,7 +84,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
       appBar: buildNowPlayingAppbar(),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        // height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -215,6 +215,8 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
         width: MediaQuery.of(context).size.width,
         child: DraggableScrollableSheet(
             minChildSize: 0.25,
+            maxChildSize: 1,
+            snap: true,
             builder: ((context, scrollController) {
               return SingleChildScrollView(
                 controller: scrollController,
@@ -249,5 +251,40 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
             })),
       ),
     );
+  }
+
+  void displayPersistentBottomSheet() {
+    Scaffold.of(context).showBottomSheet<void>((BuildContext context) {
+      return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+        ListTile(
+          leading: Icon(Icons.person),
+          title: const Text(' My Profile '),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.book),
+          title: const Text(' My Course '),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.workspace_premium),
+          title: const Text(' Go Premium '),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: Icon(Icons.video_label),
+          title: const Text(' Saved Videos '),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+      ]);
+    });
   }
 }
