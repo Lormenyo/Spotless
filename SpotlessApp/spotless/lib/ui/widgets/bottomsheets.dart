@@ -11,7 +11,7 @@ class LyricsBottomSheet extends StatelessWidget {
         minChildSize: 0.25,
         maxChildSize: 1,
         snap: true,
-        expand: true,
+        expand: false,
         builder: ((context, scrollController) {
           return SingleChildScrollView(
             controller: scrollController,

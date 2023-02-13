@@ -248,6 +248,8 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
   buildLyricsSheet() {
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
+        isDismissible: true,
         builder: (context) {
           return const LyricsBottomSheet();
         });
