@@ -213,14 +213,19 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
         padding: const EdgeInsets.all(20),
         height: 90,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          border: Border.all(
-            color: Colors.black,
-            width: 1.0,
-          ),
-        ),
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            border: Border.all(
+              color: Colors.white,
+              width: 1.0,
+            ),
+            boxShadow: const [
+              BoxShadow(
+                  color: Color(0xFFE5E5E5),
+                  blurRadius: 20.0,
+                  spreadRadius: 15.0)
+            ]),
         width: MediaQuery.of(context).size.width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -236,10 +241,19 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
             const Spacer(),
             InkWell(
               onTap: buildLyricsSheet,
-              child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 22,
-                  child: SvgPicture.asset(kArrowUp)),
+              child: Container(
+                decoration: const BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      color: Color(0xFFE5E5E5),
+                      blurRadius: 5.0,
+                      spreadRadius: 1.0,
+                      offset: Offset(0, 5))
+                ], shape: BoxShape.circle),
+                child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 22,
+                    child: SvgPicture.asset(kArrowUp)),
+              ),
             )
           ],
         ));
