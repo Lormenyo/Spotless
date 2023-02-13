@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Music {
   String artUrl;
   String title;

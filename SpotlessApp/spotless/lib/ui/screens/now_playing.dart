@@ -37,7 +37,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
 
     _audioPlayer.playbackEventStream.listen((event) {},
         onError: (Object e, StackTrace stackTrace) {
-      print('A stream error occurred: $e');
+      // print('A stream error occurred: $e');
     });
 
     // Try to load audio from a source and catch any errors.
@@ -46,7 +46,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
       await _audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(
           "https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3")));
     } catch (e) {
-      print("Error loading audio source: $e");
+      // print("Error loading audio source: $e");
     }
   }
 
@@ -97,7 +97,8 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
               music: widget.music,
             ),
             buildMusicSeekBar(),
-            const LyricsBottomSheet()
+            // const LyricsBottomSheet()
+            buildLyricsRow()
           ],
         ),
       ),
@@ -209,7 +210,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
 
   buildLyricsRow() {
     return Container(
-        height: 100,
+        height: 90,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
@@ -249,9 +250,9 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
   }
 
   buildLyricsSheet() {
-    showBottomSheet(
+    showModalBottomSheet(
         context: context,
-        builder: (scontext) {
+        builder: (context) {
           return const LyricsBottomSheet();
         });
   }
