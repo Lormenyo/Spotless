@@ -88,7 +88,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
         width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             const SizedBox(
               height: 60,
@@ -210,6 +210,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
 
   buildLyricsRow() {
     return Container(
+        padding: const EdgeInsets.all(20),
         height: 90,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -232,19 +233,14 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
               'Lyrics',
               style: Theme.of(context).textTheme.headline2,
             ),
-            const Expanded(
-              child: SizedBox(
-                width: 50,
-              ),
-            ),
-            Expanded(
-                child: InkWell(
+            const Spacer(),
+            InkWell(
               onTap: buildLyricsSheet,
               child: CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 22,
                   child: SvgPicture.asset(kArrowUp)),
-            ))
+            )
           ],
         ));
   }
