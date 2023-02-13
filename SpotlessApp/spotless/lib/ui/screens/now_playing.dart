@@ -84,22 +84,20 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
     return Scaffold(
       appBar: buildNowPlayingAppbar(),
       body: SizedBox(
-        width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // const SizedBox(
-            //   height: 60,
-            // ),
-            Positioned(
-              top: 50,
-              child: NowPlayingMusicCard(
-                music: widget.music,
-              ),
+            const SizedBox(
+              height: 60,
             ),
-            Positioned(top: 200, child: buildMusicSeekBar()),
-            Positioned(bottom: 0, child: buildLyricsRow())
+            NowPlayingMusicCard(
+              music: widget.music,
+            ),
+            buildMusicSeekBar(),
+            const LyricsBottomSheet()
           ],
         ),
       ),
@@ -137,6 +135,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
     return Container(
       padding: const EdgeInsets.all(20.0),
       width: MediaQuery.of(context).size.width,
+      height: 380,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -168,12 +167,15 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
             stream: _positionDataStream,
             builder: (context, snapshot) {
               final positionData = snapshot.data;
-              return SeekBar(
-                duration: positionData?.duration ?? Duration.zero,
-                position: positionData?.position ?? Duration.zero,
-                bufferedPosition:
-                    positionData?.bufferedPosition ?? Duration.zero,
-                onChangeEnd: _audioPlayer.seek,
+              return SizedBox(
+                height: 80,
+                child: SeekBar(
+                  duration: positionData?.duration ?? Duration.zero,
+                  position: positionData?.position ?? Duration.zero,
+                  bufferedPosition:
+                      positionData?.bufferedPosition ?? Duration.zero,
+                  onChangeEnd: _audioPlayer.seek,
+                ),
               );
             },
           ),
