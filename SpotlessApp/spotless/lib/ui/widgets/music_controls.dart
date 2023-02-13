@@ -50,7 +50,12 @@ class ControlButtons extends StatelessWidget {
                 margin: const EdgeInsets.all(8.0),
                 width: 64.0,
                 height: 64.0,
-                child: const CircularProgressIndicator(),
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(kCircularGradientBg))),
+                child: const CircularProgressIndicator(
+                  color: AppColors.spotlessPurple3,
+                ),
               );
             } else if (playing != true) {
               return IconButton(
