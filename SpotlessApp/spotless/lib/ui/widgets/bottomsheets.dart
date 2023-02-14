@@ -17,12 +17,24 @@ class LyricsBottomSheet extends StatelessWidget {
               controller: scrollController,
               child: Column(
                 children: [
-                  ...List.generate(
-                      10,
-                      (index) => const ListTile(
-                            tileColor: Colors.redAccent,
-                            title: Text('Hannah'),
-                          ))
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      children: [
+                        Flexible(
+                            child: Text(
+                          "Lately, I think of you lots \n" +
+                              "'Cause my mind's in circles for you \n" +
+                              "Please connect the dots And bring me, bring me to you \n" +
+                              "'Cause you bring out the freak in me It's only for you",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline2
+                              ?.copyWith(height: 1.7),
+                        )),
+                      ],
+                    ),
+                  )
                 ],
               ),
             );
