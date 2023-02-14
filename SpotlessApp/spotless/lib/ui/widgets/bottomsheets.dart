@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotless/ui/theme/app_assets.dart';
 
 class LyricsBottomSheet extends StatelessWidget {
   const LyricsBottomSheet({Key? key}) : super(key: key);
