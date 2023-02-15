@@ -8,16 +8,18 @@ class LyricsBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
-      // decoration: BoxDecoration(
-      //     // color: Colors.grey.withOpacity(0.1),
-      //     borderRadius: const BorderRadius.only(
-      //         topLeft: Radius.circular(20.0),
-      //         topRight: Radius.circular(20.0)),
-      //     boxShadow: const [
-      //       BoxShadow(
-      //           color: Color(0xFFE5E5E5), blurRadius: 1, spreadRadius: 1)
-      //     ]),
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.5),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
+        boxShadow: const [
+          BoxShadow(
+              color: Color(0x09E5E5E5),
+              blurRadius: 0,
+              spreadRadius: 0,
+              offset: Offset(0, -2))
+        ],
+      ),
       child: DraggableScrollableSheet(
           minChildSize: 0.25,
           maxChildSize: 1,
