@@ -264,6 +264,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
         context: context,
         isScrollControlled: true,
         isDismissible: true,
+        backgroundColor: Colors.transparent,
         builder: (context) {
           return const LyricsBottomSheet();
         });
