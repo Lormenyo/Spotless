@@ -165,14 +165,14 @@ class NowPlayingMusicCard extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: 230.0,
-        height: 280.0,
+        height: 290.0,
         child: Stack(
           children: [
             Positioned(
               top: 0,
               child: Container(
                 width: 230,
-                height: 260,
+                height: 250,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(music.artUrl), fit: BoxFit.cover),
@@ -180,13 +180,32 @@ class NowPlayingMusicCard extends StatelessWidget {
               ),
             ),
             Positioned(
-                bottom: 0,
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.transparent, width: 0.0),
+                    borderRadius:
+                        const BorderRadius.all(Radius.elliptical(90, 40)),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: -25,
                 left: 0,
                 right: 0,
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: IconButton(
                       onPressed: () {},
+                      iconSize: 80,
                       icon: const CircleAvatar(
                           radius: 30,
                           backgroundColor: Colors.white,
