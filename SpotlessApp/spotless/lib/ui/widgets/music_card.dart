@@ -175,7 +175,23 @@ class NowPlayingMusicCard extends StatelessWidget {
                   image: DecorationImage(
                       image: AssetImage(music.artUrl), fit: BoxFit.cover),
                   borderRadius: BorderRadius.circular(30)),
-            )
+            ),
+            Positioned(
+                bottom: -10,
+                left: 0,
+                right: 0,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: const CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Colors.white,
+                          child: Icon(
+                            Icons.heart_broken,
+                            size: 40,
+                          ))),
+                ))
           ],
         ),
       ),
