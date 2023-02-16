@@ -86,20 +86,22 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            const SizedBox(
-              height: 60,
-            ),
-            NowPlayingMusicCard(
-              music: widget.music,
-            ),
-            buildMusicSeekBar(),
-            // const LyricsBottomSheet()
-            buildLyricsRow()
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              const SizedBox(
+                height: 50,
+              ),
+              NowPlayingMusicCard(
+                music: widget.music,
+              ),
+              buildMusicSeekBar(),
+              // const LyricsBottomSheet()
+              buildLyricsRow()
+            ],
+          ),
         ),
       ),
     );
