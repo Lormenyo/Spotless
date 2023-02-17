@@ -191,14 +191,16 @@ class NowPlayingMusicCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Colors.transparent, width: 0.0),
-                    borderRadius:
-                        const BorderRadius.all(Radius.elliptical(90, 40)),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(200),
+                      topRight: Radius.circular(200),
+                    ),
                   ),
                 ),
               ),
             ),
             Positioned(
-                bottom: -25,
+                bottom: -21,
                 left: 0,
                 right: 0,
                 child: Align(
@@ -206,12 +208,22 @@ class NowPlayingMusicCard extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {},
                       iconSize: 80,
-                      icon: const CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.heart_broken,
-                            size: 40,
+                      icon: Container(
+                          width: 80,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.withOpacity(0.4),
+                                    blurRadius: 2,
+                                    spreadRadius: 2)
+                              ]),
+                          child: const Icon(
+                            Icons.favorite,
+                            size: 30,
+                            color: AppColors.spotlessPurple1,
                           ))),
                 ))
           ],
