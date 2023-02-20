@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotless/data/models/music.dart';
+import 'package:spotless/ui/screens/search.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 import 'package:spotless/ui/widgets/music_card.dart';
@@ -59,13 +60,21 @@ class _HomeState extends State<Home> {
             backgroundColor: AppColors.spotlessBrown,
             child: Image.asset(kProfileImage),
           ),
-          CircleAvatar(
-            backgroundColor: AppColors.spotlessPurple3,
-            child: SvgPicture.asset(kSearchIcon),
+          InkWell(
+            onTap: onSearchPressed,
+            child: CircleAvatar(
+              backgroundColor: AppColors.spotlessPurple3,
+              child: SvgPicture.asset(kSearchIcon),
+            ),
           )
         ],
       ),
     );
+  }
+
+  onSearchPressed() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: ((context) => const Search())));
   }
 
   Widget getPageTitle() {
