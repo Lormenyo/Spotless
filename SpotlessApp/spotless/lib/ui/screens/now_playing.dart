@@ -7,6 +7,7 @@ import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 import 'package:spotless/ui/widgets/bottomsheets.dart';
+import 'package:spotless/ui/widgets/custom_appbars.dart';
 import 'package:spotless/ui/widgets/music_card.dart';
 import 'package:flutter/services.dart';
 import 'package:spotless/ui/widgets/just_audio_common.dart';
@@ -108,26 +109,8 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
   }
 
   buildNowPlayingAppbar() {
-    return AppBar(
-      leading: IconButton(
-          onPressed: onBackPressed,
-          icon: const CircleAvatar(
-            backgroundColor: AppColors.spotlessPurple3,
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-          )),
-      centerTitle: true,
-      title: Text(
-        'Now Playing',
-        style: Theme.of(context)
-            .textTheme
-            .headline2
-            ?.copyWith(color: Colors.black, fontSize: 25),
-      ),
-      backgroundColor: Colors.white,
-    );
+    return SpotlessSimpleAppBar(
+        title: 'Now Playing', onBackPressed: onBackPressed);
   }
 
   onBackPressed() {
