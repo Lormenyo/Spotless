@@ -110,7 +110,14 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
 
   buildNowPlayingAppbar() {
     return SpotlessSimpleAppBar(
-        title: 'Now Playing', onBackPressed: onBackPressed);
+        title: Text(
+          'Now Playing',
+          style: Theme.of(context)
+              .textTheme
+              .headline2
+              ?.copyWith(color: Colors.black, fontSize: 25),
+        ),
+        onBackPressed: onBackPressed);
   }
 
   onBackPressed() {

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 
-class SpotlessSimpleAppBar extends StatelessWidget {
-  final String title;
+class SpotlessSimpleAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  final Widget title;
   final VoidCallback onBackPressed;
   const SpotlessSimpleAppBar(
       {Key? key, required this.title, required this.onBackPressed})
       : super(key: key);
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +25,7 @@ class SpotlessSimpleAppBar extends StatelessWidget {
             ),
           )),
       centerTitle: true,
-      title: Text(
-        title,
-        style: Theme.of(context)
-            .textTheme
-            .headline2
-            ?.copyWith(color: Colors.black, fontSize: 25),
-      ),
+      title: title,
       backgroundColor: Colors.white,
     );
   }
