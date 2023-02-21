@@ -14,7 +14,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SpotlessSimpleAppBar(
-          title: Container(
+          title: SizedBox(
             height: 50,
             child: TextFormField(
               cursorColor: AppColors.spotlessBlack,
