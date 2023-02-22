@@ -1,0 +1,4 @@
+#!/Users/lormenyo/Desktop/Projects/Spotless/venv/bin/python
+# EASY-INSTALL-SCRIPT: 'doodle-translate==0.2.3','google-translate'
+__requires__ = 'doodle-translate==0.2.3'
+__import__('pkg_resources').run_script('doodle-translate==0.2.3', 'google-translate')

@@ -1,0 +1,11 @@
+MANIFEST
+
+*.pyc
+*.png
+*.egg-info
+
+dist/
+build/
+docs/_build
+
+!docs/docs/_static/*.png
