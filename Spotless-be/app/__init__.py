@@ -1,7 +1,9 @@
 import pprint
-
 from spotifyHelper import sp
 from models.spotifyModel import SpotifySong;
+from flaskHelper import app
+
+
 
 def main():
     song = SpotifySong(songName='Breath', artistName='Sam Kim')
@@ -17,3 +19,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    app.run()
