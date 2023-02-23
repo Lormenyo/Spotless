@@ -1,6 +1,7 @@
-from spot import genius;
+from spotifyHelper import genius
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
+
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
