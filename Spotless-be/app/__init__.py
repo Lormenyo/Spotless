@@ -1,8 +1,9 @@
 import pprint
 from spotifyHelper import sp
 from models.spotifyModel import SpotifySong;
+
+import controllers.search
 from flaskHelper import app
-import controllers.routes
 
 
 
@@ -20,4 +21,4 @@ import controllers.routes
 
 if __name__ == '__main__':
     # main()
-    app.run()
+    app.run(debug=True)
