@@ -1,9 +1,10 @@
 from flask_restx import Resource, Namespace
 
 
-searchNamespace = Namespace('search', 'Search related endpoints')
+lyricsNamespace = Namespace('lyrics', 'Lyrics related endpoints')
 
-@searchNamespace.route("/")
+
+@lyricsNamespace.route("/")
 class MainClass(Resource):
 	def get(self):
 		return {
