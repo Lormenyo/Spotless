@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint
+from flask import Flask
 from flask_restx import Api
 from controllers.search import searchNamespace
 from controllers.lyrics import lyricsNamespace
