@@ -37,6 +37,8 @@ dependencies:
   audio_session: ^0.1.13
   retrofit: ^4.0.1
   logger: any 
+  json_annotation: ^4.8.0
+  dio: ^5.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
