@@ -10,3 +10,5 @@ config.json
 /google-translate-0.2.3
 
 .DS_Store
+
+**.pyc
