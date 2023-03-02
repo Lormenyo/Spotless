@@ -1,5 +1,7 @@
 from flask_restx import Resource, Namespace
 
+from models.spotifyModel import SpotifyGeneral
+
 
 releaseNamespace = Namespace('release', 'New Release related endpoints')
 
@@ -8,9 +10,6 @@ releaseNamespace = Namespace('release', 'New Release related endpoints')
 class MainClass(Resource):
 	def get(self):
 		return {
-			"status": "Got new data"
-		}
-	def post(self):
-		return {
-			"status": "Posted new data"
+			"status": "Got new data",
+            "data": SpotifyGeneral.getNewReleases()
 		}

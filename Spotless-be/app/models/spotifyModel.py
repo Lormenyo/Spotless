@@ -1,14 +1,28 @@
-from spotifyHelper import genius
+from spotifyHelper import genius, sp
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
 
+class SpotifyGeneral:
+    def __init__(self) -> None:
+        pass
+
+    @staticmethod
+    def getCategories():
+        return sp.categories()
+        
+    @staticmethod
+    def getCategoryPlaylists(id):
+        return sp.category_playlists(category_id=id, limit=20)
+
+    @staticmethod
+    def getNewReleases():
+        return sp.new_releases(limit=30)
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
         self.songName = songName
         self.artist = genius.search_artist(artistName, max_songs=1, sort="title", include_features=True)
         self.song = genius.search_song(songName, self.artist.name)
-        print(self.song.url)
 
     def getSongArtist(self,):
         return self.artist.name
