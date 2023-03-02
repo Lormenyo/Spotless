@@ -4,59 +4,41 @@ import 'package:flutter/material.dart';
 TextTheme spotlessLightTextTheme(TextTheme base) {
   return base
       .copyWith(
-        headline1: base.headline1!.copyWith(
+        headlineLarge: base.headlineLarge!.copyWith(
           fontSize: 32.0,
           height: 1.25,
           fontFamily: 'Metropolis',
           fontWeight: FontWeight.w700,
         ),
-        headline2: base.headline2!.copyWith(
+        headlineMedium: base.headlineMedium!.copyWith(
           fontSize: 28.0,
           height: 1.25,
           fontFamily: 'Metropolis',
           fontWeight: FontWeight.w700,
         ),
-        headline3: base.headline3!.copyWith(
+        headlineSmall: base.headlineSmall!.copyWith(
           fontSize: 16.0,
           height: 1.125,
           fontFamily: 'Metropolis',
           fontWeight: FontWeight.w600,
         ),
-        headline4: base.headline4!.copyWith(
-          fontSize: 14.0,
-          height: 1.14,
-          fontFamily: 'Metropolis',
-          fontWeight: FontWeight.w500,
-        ),
-        subtitle1: base.headline3!.copyWith(
+        bodySmall: base.bodySmall!.copyWith(
           fontSize: 14.0,
           height: 1.2,
           fontFamily: 'Metropolis',
         ),
-        bodyText1: base.bodyText1!.copyWith(
+        bodyLarge: base.bodyLarge!.copyWith(
           fontSize: 14.0,
           height: 1.2,
           fontFamily: 'Metropolis',
           fontWeight: FontWeight.w400,
         ),
-        bodyText2: base.bodyText2!.copyWith(
+        bodyMedium: base.bodyMedium!.copyWith(
           fontSize: 12.0,
           height: 1.17,
           fontFamily: 'Metropolis',
           fontWeight: FontWeight.w200,
         ),
-        button: base.button!.copyWith(
-          fontSize: 14.0,
-          height: 1.2,
-          fontFamily: 'Metropolis',
-        ),
-        caption: base.caption!.copyWith(
-          fontSize: 10.0,
-          height: 1.2,
-          fontFamily: 'Metropolis',
-        ),
-        overline: base.overline!
-            .copyWith(fontWeight: FontWeight.normal, fontFamily: 'Metropolis'),
       )
       .apply(
         displayColor: AppColors.spotlessBlack,
