@@ -114,7 +114,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
           'Now Playing',
           style: Theme.of(context)
               .textTheme
-              .headline2
+              .headlineMedium
               ?.copyWith(color: Colors.black, fontSize: 25),
         ),
         onBackPressed: onBackPressed);
@@ -139,7 +139,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
           Text(
             widget.music.title,
             style:
-                Theme.of(context).textTheme.headline2?.copyWith(fontSize: 23),
+                Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 23),
           ),
           const SizedBox(
             height: 15,
@@ -148,7 +148,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
             widget.music.artistName,
             style: Theme.of(context)
                 .textTheme
-                .bodyText2
+                .bodyMedium
                 ?.copyWith(fontSize: 17, color: AppColors.spotlessGray3),
           ),
           const SizedBox(
@@ -228,7 +228,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
             ),
             Text(
               'Lyrics',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Spacer(),
             InkWell(

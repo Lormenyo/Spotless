@@ -88,7 +88,7 @@ class _HomeState extends State<Home> {
               width: 270,
               child: Text(
                 'Find the best music for you',
-                style: Theme.of(context).textTheme.headline1,
+                style: Theme.of(context).textTheme.headlineLarge,
               )),
           SizedBox(width: 100, child: Image.asset(kRightHandPoint))
         ],
@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
         children: [
           Text(
             'Discover',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.headlineMedium,
             textAlign: TextAlign.left,
           ),
           const SizedBox(
@@ -145,7 +145,7 @@ class _HomeState extends State<Home> {
         children: [
           Text(
             'New Release',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.headlineMedium,
             textAlign: TextAlign.left,
           ),
           const SizedBox(

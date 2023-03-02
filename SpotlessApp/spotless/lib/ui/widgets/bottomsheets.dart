@@ -44,7 +44,7 @@ class LyricsBottomSheet extends StatelessWidget {
                                 "'Cause you bring out the freak in me It's only for you",
                             style: Theme.of(context)
                                 .textTheme
-                                .headline2
+                                .headlineLarge
                                 ?.copyWith(height: 1.7),
                           )),
                         ],

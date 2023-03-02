@@ -19,7 +19,7 @@ class _SearchState extends State<Search> {
             child: TextFormField(
               cursorColor: AppColors.spotlessBlack,
               style:
-                  Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 17),
+                  Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 17),
               textAlignVertical: TextAlignVertical.center,
               decoration: InputDecoration(
                   prefixIcon: const Icon(

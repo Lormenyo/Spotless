@@ -104,7 +104,7 @@ class SeekBarState extends State<SeekBar> {
                   '${widget.position}',
               style: Theme.of(context)
                   .textTheme
-                  .caption
+                  .bodySmall
                   ?.copyWith(color: AppColors.spotlessPurple1, fontSize: 12)),
         ),
         Positioned(
@@ -115,8 +115,10 @@ class SeekBarState extends State<SeekBar> {
                       .firstMatch("$_remaining")
                       ?.group(1) ??
                   '$_remaining',
-              style:
-                  Theme.of(context).textTheme.caption?.copyWith(fontSize: 12)),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(fontSize: 12)),
         ),
       ],
     );
