@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotless/data/api/apiCalls.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/screens/search.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
@@ -15,6 +16,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getAllNewReleases();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
