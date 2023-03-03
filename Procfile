@@ -1,1 +1,1 @@
-web: gunicorn app:Spotless-be/app/__init__
+web: gunicorn app:app
