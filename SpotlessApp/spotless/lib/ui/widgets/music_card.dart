@@ -86,15 +86,15 @@ class SquareMusicCard extends StatelessWidget {
                       music.title,
                       style: Theme.of(context)
                           .textTheme
-                          .headlineMedium
+                          .headlineSmall
                           ?.copyWith(color: Colors.white),
                     ),
                     Text(
                       music.genre,
                       style: Theme.of(context)
                           .textTheme
-                          .headlineMedium
-                          ?.copyWith(color: Colors.white),
+                          .headlineSmall
+                          ?.copyWith(color: Colors.white, fontSize: 12),
                     )
                   ],
                 ),
@@ -131,7 +131,8 @@ class RectangularMusicCard extends StatelessWidget {
         ),
         title: Text(
           music.artistName,
-          style: Theme.of(context).textTheme.headlineMedium,
+          style:
+              Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 19),
         ),
         subtitle: Row(
           children: [
