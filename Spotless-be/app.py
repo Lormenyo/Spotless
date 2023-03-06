@@ -1,9 +1,9 @@
 import pprint
-from spotifyHelper import sp
-from models.spotifyModel import SpotifySong;
+from app.spotifyHelper import sp
+from app.models.spotifyModel import SpotifySong;
 
-import controllers.search
-from flaskHelper import app
+import app.controllers.search
+from app.flaskHelper import app
 
 
 
