@@ -1,4 +1,4 @@
-from flaskHelper import app
+from app.flaskHelper import app
 
 
 
