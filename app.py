@@ -1,7 +1,7 @@
-from app.flaskHelper import app
+from app.flaskHelper import app as application
 
 
-
+app = application
 
 
 if __name__ == '__main__':
