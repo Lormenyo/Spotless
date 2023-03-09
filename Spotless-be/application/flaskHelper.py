@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_restx import Api
-from controllers.search import searchNamespace
-from controllers.lyrics import lyricsNamespace
-from controllers.releases import releaseNamespace
-from controllers.trending import trendingNamespace
+from application.controllers.search import searchNamespace
+from application.controllers.lyrics import lyricsNamespace
+from application.controllers.releases import releaseNamespace
+from application.controllers.trending import trendingNamespace
 
 
 app = Flask(__name__)

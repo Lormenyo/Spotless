@@ -6,7 +6,7 @@ import lyricsgenius
 
 
 
-configFile = open("config.json")
+configFile = open("configuration/config.json")
 config = json.load(configFile)
 configFile.close()
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=config["clientId"],
