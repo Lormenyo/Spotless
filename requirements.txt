@@ -141,7 +141,6 @@ regex==2021.10.23
 requests==2.20.1
 rlp==2.0.1
 scikit-learn==0.24.2
-scikit-surprise==1.1.1
 scipy==1.6.3
 seaborn==0.11.1
 sec-api==1.0.8
