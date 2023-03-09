@@ -12,3 +12,5 @@ config.json
 .DS_Store
 
 **.pyc
+
+.env
