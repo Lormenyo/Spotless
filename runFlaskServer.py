@@ -5,7 +5,6 @@ from app.controllers.lyrics import lyricsNamespace
 from app.controllers.releases import releaseNamespace
 from app.controllers.trending import trendingNamespace
 
-
 app = Flask(__name__)
 
 api = Api(app, version='1.0', title='Spotless API',
@@ -18,5 +17,6 @@ api.add_namespace(releaseNamespace)
 api.add_namespace(trendingNamespace)
 
 
-
-
+if __name__ == '__main__':
+    # main()
+    app.run(debug=True)
