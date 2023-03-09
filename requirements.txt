@@ -47,7 +47,6 @@ soupsieve==2.3.2.post1
 spotify==0.10.2
 spotipy==2.22.0
 translators==5.5.5
-twodict==1.2
 urllib3==1.26.13
 Werkzeug==2.2.3
 yarl==1.8.2
