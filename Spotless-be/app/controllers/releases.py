@@ -1,6 +1,6 @@
 from flask_restx import Resource, Namespace
 
-from application.models.spotifyModel import SpotifyGeneral
+from app.models.spotifyModel import SpotifyGeneral
 
 
 releaseNamespace = Namespace('release', 'New Release related endpoints')

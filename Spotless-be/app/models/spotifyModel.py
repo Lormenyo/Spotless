@@ -1,4 +1,4 @@
-from application.spotifyHelper import genius, sp
+from app.spotifyHelper import genius, sp
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
 
