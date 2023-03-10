@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "30773877af673ad64ab80f2e2d11ee9a24eeee8f268b0aacf6b33343a52cc033"
+build_start_time: [1678437176, 31986951]
+build_end_time: [1678437180, 128417015]
+inputs:
+  "/Users/lormenyo/.pub-cache/hosted/pub.dev/path_provider_foundation-2.1.1/macos/Classes/PathProviderPlugin.swift": [1677796925, 201395511]
+  "/Users/lormenyo/.pub-cache/hosted/pub.dev/path_provider_foundation-2.1.1/macos/Classes/messages.g.swift": [1677796925, 201736927]

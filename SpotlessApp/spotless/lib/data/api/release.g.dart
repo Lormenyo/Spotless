@@ -13,9 +13,7 @@ ReleaseAlbum _$ReleaseAlbumFromJson(Map<String, dynamic> json) => ReleaseAlbum(
       external_urls: json['external_urls'] as Map<String, dynamic>?,
       href: json['href'] as String?,
       id: json['id'] as String?,
-      images: (json['images'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
-          .toList(),
+      images: json['images'] as List<dynamic>?,
       name: json['name'] as String?,
       release_date: json['release_date'] as String?,
       release_date_precision: json['release_date_precision'] as String?,
@@ -52,7 +50,7 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://5d42a6e2bc64f90014a56ca0.mockapi.io/api/v1/';
+    baseUrl ??= 'https://spotless.up.railway.app';
   }
 
   final Dio _dio;
