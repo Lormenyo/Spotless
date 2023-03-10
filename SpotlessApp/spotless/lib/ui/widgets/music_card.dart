@@ -2,19 +2,27 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotless/data/api/release.dart';
 import 'package:spotless/data/models/music.dart';
+import 'package:spotless/helpers/custom_extensions.dart';
 import 'package:spotless/ui/screens/now_playing.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 
 class SquareMusicCard extends StatelessWidget {
   // art_url, title, artist, genre
-  final Music music;
+  final ReleaseAlbum music;
   const SquareMusicCard({Key? key, required this.music}) : super(key: key);
 
-  void onSquareMusicCardPressed(Music music, BuildContext context) {
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => NowPlaying(music: this.music)));
+  void onSquareMusicCardPressed(ReleaseAlbum music, BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => NowPlaying(
+            music: Music(
+                artUrl: music.images?[0]["url"],
+                title: music.name ?? "",
+                genre: music.type ?? "",
+                artistName: music.artists?[0]["name"],
+                artistImage: kCoverArt))));
   }
 
   @override
@@ -30,10 +38,11 @@ class SquareMusicCard extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(kCoverArt), fit: BoxFit.cover),
-                  borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                      image: NetworkImage(music.images?[0]["url"]),
+                      fit: BoxFit.cover),
+                  borderRadius: const BorderRadius.all(Radius.circular(30.0))),
             ),
             Positioned(
                 bottom: 0.4,
@@ -83,14 +92,14 @@ class SquareMusicCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      music.title,
+                      "${music.name}".truncateTo(7),
                       style: Theme.of(context)
                           .textTheme
                           .headlineSmall
                           ?.copyWith(color: Colors.white),
                     ),
                     Text(
-                      music.genre,
+                      "${music.artists?[0]['name']}".truncateTo(7),
                       style: Theme.of(context)
                           .textTheme
                           .headlineSmall

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:spotless/data/api/release.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
@@ -138,8 +139,10 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
           ),
           Text(
             widget.music.title,
-            style:
-                Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 23),
+            style: Theme.of(context)
+                .textTheme
+                .headlineMedium
+                ?.copyWith(fontSize: 23),
           ),
           const SizedBox(
             height: 15,

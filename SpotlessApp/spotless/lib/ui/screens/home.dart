@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotless/data/api/apiCalls.dart';
+import 'package:spotless/data/api/release.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/ui/screens/search.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
@@ -16,11 +17,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<ReleaseAlbum>? albums = [];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getAllNewReleases();
   }
 
   @override
@@ -122,21 +123,25 @@ class _HomeState extends State<Home> {
             height: 10,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 150,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: List.generate(
-                  5,
-                  (index) => SquareMusicCard(
-                      music: Music(
-                          artUrl: kCoverArt,
-                          title: "Pipe Dreams",
-                          genre: "Pop",
-                          artistName: "IMRSQD",
-                          artistImage: kProfileImage))),
-            ),
-          )
+              width: MediaQuery.of(context).size.width,
+              height: 150,
+              child: FutureBuilder(
+                  future: getAllNewReleases(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: snapshot.data?.length ?? 0,
+                          itemBuilder: (context, index) {
+                            return SquareMusicCard(
+                                music: snapshot.data![index]);
+                          });
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  })),
         ],
       ),
     );
@@ -160,21 +165,25 @@ class _HomeState extends State<Home> {
             height: 10,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 150,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: List.generate(
-                  5,
-                  (index) => SquareMusicCard(
-                      music: Music(
-                          artUrl: kCoverArt,
-                          title: "Pipe Dreams",
-                          genre: "Pop",
-                          artistName: "IMRSQD",
-                          artistImage: kProfileImage))),
-            ),
-          )
+              width: MediaQuery.of(context).size.width,
+              height: 150,
+              child: FutureBuilder(
+                  future: getAllNewReleases(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: snapshot.data?.length ?? 0,
+                          itemBuilder: (context, index) {
+                            return SquareMusicCard(
+                                music: snapshot.data![index]);
+                          });
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  })),
         ],
       ),
     );

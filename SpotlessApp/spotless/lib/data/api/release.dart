@@ -15,12 +15,12 @@ abstract class RestClient {
 @JsonSerializable()
 class ReleaseAlbum {
   String? album_type;
-  List? artists;
+  List<Map<String, dynamic>>? artists;
   List? available_markets;
   Map? external_urls;
   String? href;
   String? id;
-  List? images;
+  List<Map>? images;
   String? name;
   String? release_date;
   String? release_date_precision;
