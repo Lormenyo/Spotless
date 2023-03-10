@@ -16,7 +16,7 @@ class SpotifyGeneral:
 
     @staticmethod
     def getNewReleases():
-        return sp.new_releases(limit=30)
+        return sp.new_releases(limit=30)["albums"]["items"]
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
