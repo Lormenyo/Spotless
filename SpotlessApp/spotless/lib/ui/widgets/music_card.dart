@@ -185,7 +185,7 @@ class NowPlayingMusicCard extends StatelessWidget {
                 height: 250,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(music.artUrl), fit: BoxFit.cover),
+                        image: NetworkImage(music.artUrl), fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(30)),
               ),
             ),
