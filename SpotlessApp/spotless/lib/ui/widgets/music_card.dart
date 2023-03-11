@@ -92,14 +92,14 @@ class SquareMusicCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${music.name}".truncateTo(7),
+                      "${music.name}".truncateTo(11),
                       style: Theme.of(context)
                           .textTheme
                           .headlineSmall
-                          ?.copyWith(color: Colors.white),
+                          ?.copyWith(color: Colors.white, fontSize: 14),
                     ),
                     Text(
-                      "${music.artists?[0]['name']}".truncateTo(7),
+                      "${music.artists?[0]['name']}".truncateTo(11),
                       style: Theme.of(context)
                           .textTheme
                           .headlineSmall
