@@ -6,6 +6,7 @@ from app.controllers.releases import releaseNamespace
 from app.controllers.trending import trendingNamespace
 from app.controllers.toplists import toplistsNamespace
 from app.controllers.genrelist import genreNamespace
+from app.controllers.albumtracks import albumTracksNamespace
 
 app = Flask(__name__)
 
@@ -19,6 +20,7 @@ api.add_namespace(releaseNamespace)
 api.add_namespace(trendingNamespace)
 api.add_namespace(toplistsNamespace)
 api.add_namespace(genreNamespace)
+api.add_namespace(albumTracksNamespace)
 
 
 if __name__ == '__main__':

@@ -21,6 +21,10 @@ class SpotifyGeneral:
     @staticmethod
     def getTop50Global():
         return sp.playlist("37i9dQZEVXbMDoHDwVN2tF")["tracks"]["items"]
+    
+    @staticmethod
+    def getAlbumTracks(id):
+        return sp.album_tracks(id)
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
