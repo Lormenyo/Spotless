@@ -20,7 +20,7 @@ class SpotifyGeneral:
     
     @staticmethod
     def getTop50Global():
-        return sp.playlist("37i9dQZEVXbMDoHDwVN2tF")["tracks"]["items"]
+        return [track["track"]["album"] for track in sp.playlist("37i9dQZEVXbMDoHDwVN2tF")["tracks"]["items"]]
     
     @staticmethod
     def getAlbumTracks(id):
