@@ -191,21 +191,24 @@ class _HomeState extends State<Home> {
 
   Widget getTopSongs() {
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      width: MediaQuery.of(context).size.width,
-      height: 100,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: List.generate(
-            5,
-            (index) => RectangularMusicCard(
-                music: Music(
-                    artUrl: kCoverArt,
-                    artistName: 'Hannah',
-                    genre: 'Pop',
-                    title: 'Rain',
-                    artistImage: kProfileImage))),
-      ),
-    );
+        padding: const EdgeInsets.all(10.0),
+        width: MediaQuery.of(context).size.width,
+        height: 100,
+        child: FutureBuilder(
+            future: getAllNewReleases(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      return RectangularMusicCard(music: snapshot.data![index]);
+                    });
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            }));
   }
 }

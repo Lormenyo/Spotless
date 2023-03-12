@@ -118,7 +118,7 @@ class SquareMusicCard extends StatelessWidget {
 
 class RectangularMusicCard extends StatelessWidget {
   // art_url, title, artist, genre
-  final Music music;
+  final ReleaseAlbum music;
   const RectangularMusicCard({Key? key, required this.music}) : super(key: key);
 
   @override
@@ -136,25 +136,25 @@ class RectangularMusicCard extends StatelessWidget {
       child: ListTile(
         tileColor: tileColorList.first,
         leading: CircleAvatar(
-          child: Image.asset(music.artistImage),
+          backgroundImage: NetworkImage(music.images?[0]["url"]),
         ),
         title: Text(
-          music.artistName,
+          "${music.artists?[0]['name']}".truncateTo(10),
           style:
-              Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 19),
+              Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 12),
         ),
         subtitle: Row(
           children: [
             SvgPicture.asset(kSmallPurpleMusic),
             const SizedBox(
-              width: 8,
+              width: 5,
             ),
             Text(
-              music.title,
+              "${music.name}".truncateTo(9),
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge
-                  ?.copyWith(color: AppColors.spotlessGray3),
+                  ?.copyWith(color: AppColors.spotlessGray3, fontSize: 10),
             ),
           ],
         ),
