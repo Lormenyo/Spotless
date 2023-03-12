@@ -1,8 +1,12 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'album.dart';
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ReleaseAlbum _$ReleaseAlbumFromJson(Map<String, dynamic> json) => ReleaseAlbum(
+Album _$AlbumFromJson(Map<String, dynamic> json) => Album(
       album_type: json['album_type'] as String?,
       artists: (json['artists'] as List<dynamic>?)
           ?.map((e) => e as Map<String, dynamic>)
@@ -22,8 +26,7 @@ ReleaseAlbum _$ReleaseAlbumFromJson(Map<String, dynamic> json) => ReleaseAlbum(
       uri: json['uri'] as String?,
     );
 
-Map<String, dynamic> _$ReleaseAlbumToJson(ReleaseAlbum instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AlbumToJson(Album instance) => <String, dynamic>{
       'album_type': instance.album_type,
       'artists': instance.artists,
       'available_markets': instance.available_markets,

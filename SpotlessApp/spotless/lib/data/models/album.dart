@@ -1,19 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:retrofit/retrofit.dart';
-import 'package:dio/dio.dart';
 
-part 'release.g.dart';
-
-@RestApi(baseUrl: "https://spotless.up.railway.app")
-abstract class RestClient {
-  factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
-
-  @GET("/release")
-  Future<List<ReleaseAlbum>> getNewReleases();
-}
+part 'album.g.dart';
 
 @JsonSerializable()
-class ReleaseAlbum {
+class Album {
   String? album_type;
   List<Map<String, dynamic>>? artists;
   List? available_markets;
@@ -28,7 +18,7 @@ class ReleaseAlbum {
   String? type;
   String? uri;
 
-  ReleaseAlbum(
+  Album(
       {this.album_type,
       this.artists,
       this.available_markets,
@@ -43,7 +33,6 @@ class ReleaseAlbum {
       this.type,
       this.uri});
 
-  factory ReleaseAlbum.fromJson(Map<String, dynamic> json) =>
-      _$ReleaseAlbumFromJson(json);
-  Map<String, dynamic> toJson() => _$ReleaseAlbumToJson(this);
+  factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
+  Map<String, dynamic> toJson() => _$AlbumToJson(this);
 }

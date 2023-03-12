@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spotless/data/api/apiCalls.dart';
-import 'package:spotless/data/api/release.dart';
-import 'package:spotless/data/models/music.dart';
+import 'package:spotless/data/api/apicalls.dart';
+import 'package:spotless/data/models/album.dart';
 import 'package:spotless/ui/screens/search.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
@@ -17,7 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<ReleaseAlbum>? albums = [];
+  List<Album>? albums = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -126,9 +125,10 @@ class _HomeState extends State<Home> {
               width: MediaQuery.of(context).size.width,
               height: 150,
               child: FutureBuilder(
-                  future: getAllNewReleases(),
+                  future: getAllTrendingAlbums(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
+                      print(snapshot.data?[0].images);
                       return ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data?.length ?? 0,
