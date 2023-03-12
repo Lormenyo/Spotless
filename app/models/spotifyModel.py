@@ -24,7 +24,7 @@ class SpotifyGeneral:
     
     @staticmethod
     def getAlbumTracks(id):
-        return sp.album_tracks(id)
+        return sp.album_tracks(id)["items"]
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
