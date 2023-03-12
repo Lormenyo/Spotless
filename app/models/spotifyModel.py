@@ -8,15 +8,11 @@ class SpotifyGeneral:
 
     @staticmethod
     def getCategories():
-        return sp.categories()
+        return sp.categories()["categories"]["items"]
         
     @staticmethod
-    def getCategoryPlaylists(self, id):
+    def getCategoryPlaylists(id):
         return sp.category_playlists(category_id=id, limit=20)
-    
-    @staticmethod
-    def getTopLists(self):
-        return self.getCategoryPlaylists("toplists")
 
     @staticmethod
     def getNewReleases():

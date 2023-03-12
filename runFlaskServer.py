@@ -4,6 +4,8 @@ from app.controllers.search import searchNamespace
 from app.controllers.lyrics import lyricsNamespace
 from app.controllers.releases import releaseNamespace
 from app.controllers.trending import trendingNamespace
+from app.controllers.toplists import toplistsNamespace
+from app.controllers.genrelist import genreNamespace
 
 app = Flask(__name__)
 
@@ -15,6 +17,8 @@ api.add_namespace(searchNamespace)
 api.add_namespace(lyricsNamespace)
 api.add_namespace(releaseNamespace)
 api.add_namespace(trendingNamespace)
+api.add_namespace(toplistsNamespace)
+api.add_namespace(genreNamespace)
 
 
 if __name__ == '__main__':

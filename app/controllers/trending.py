@@ -8,8 +8,6 @@ trendingNamespace = Namespace('trending', 'Trending songs related endpoints')
 @trendingNamespace.route("/")
 class MainClass(Resource):
 	def get(self):
-		# return SpotifyGeneral.getCategories()
-		# return SpotifyGeneral.getCategoryPlaylists("toplists")
 		return SpotifyGeneral.getTop50Global()
 	def post(self):
 		return {
