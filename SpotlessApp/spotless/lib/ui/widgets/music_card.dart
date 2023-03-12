@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotless/data/models/album.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/helpers/custom_extensions.dart';
-import 'package:spotless/ui/screens/now_playing.dart';
+import 'package:spotless/ui/screens/album_tracks.dart';
 import 'package:spotless/ui/theme/app_assets.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 
@@ -17,13 +17,14 @@ class SquareMusicCard extends StatelessWidget {
 
   void onSquareMusicCardPressed(Album music, BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => NowPlaying(
-            music: Music(
-                artUrl: music.images?[0]["url"],
-                title: music.name ?? "",
-                genre: music.type ?? "",
-                artistName: music.artists?[0]["name"],
-                artistImage: kCoverArt))));
+        builder: (context) => AlbumTracks(album: this.music)));
+    // NowPlaying(
+    //     music: Music(
+    //         artUrl: music.images?[0]["url"],
+    //         title: music.name ?? "",
+    //         genre: music.type ?? "",
+    //         artistName: music.artists?[0]["name"],
+    //         artistImage: kCoverArt))));
   }
 
   @override

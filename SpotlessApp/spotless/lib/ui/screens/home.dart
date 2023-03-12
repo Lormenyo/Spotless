@@ -128,7 +128,6 @@ class _HomeState extends State<Home> {
                   future: getAllTrendingAlbums(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
-                      print(snapshot.data?[0].images);
                       return ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data?.length ?? 0,
