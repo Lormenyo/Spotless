@@ -11,12 +11,20 @@ class SpotifyGeneral:
         return sp.categories()
         
     @staticmethod
-    def getCategoryPlaylists(id):
+    def getCategoryPlaylists(self, id):
         return sp.category_playlists(category_id=id, limit=20)
+    
+    @staticmethod
+    def getTopLists(self):
+        return self.getCategoryPlaylists("toplists")
 
     @staticmethod
     def getNewReleases():
         return sp.new_releases(limit=30)["albums"]["items"]
+    
+    @staticmethod
+    def getTop50Global():
+        return sp.playlist("37i9dQZEVXbMDoHDwVN2tF")["tracks"]["items"]
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
