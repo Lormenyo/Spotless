@@ -80,13 +80,13 @@ class _AlbumTracksState extends State<AlbumTracks> {
             context,
             MaterialPageRoute(
                 builder: (BuildContext context) => NowPlaying(
-                        music: Music(
-                      artUrl: "${widget.album.images?[0]['url']}",
-                      title: "${track.name}",
-                      genre: "genre",
-                      artistName: getArtistNames(track.artists ?? []),
-                      artistImage: "${widget.album.images?[0]['url']}",
-                    )))),
+                    music: Music(
+                        artUrl: "${widget.album.images?[0]['url']}",
+                        title: "${track.name}",
+                        genre: "genre",
+                        artistName: getArtistNames(track.artists ?? []),
+                        artistImage: "${widget.album.images?[0]['url']}",
+                        url: "${track.preview_url}")))),
         // leading: Container(
         //   width: 100,
         //   height: 100,

@@ -23,6 +23,7 @@ class NowPlaying extends StatefulWidget {
 
 class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
   final _audioPlayer = AudioPlayer();
+  String lyrics = "";
 
   @override
   void initState() {
@@ -30,7 +31,10 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
     ambiguate(WidgetsBinding.instance)!.addObserver(this);
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle());
     _init();
+    getLyrics();
   }
+
+  void getLyrics() {}
 
   Future<void> _init() async {
     final session = await AudioSession.instance;
@@ -43,9 +47,11 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
 
     // Try to load audio from a source and catch any errors.
     try {
+      await _audioPlayer
+          .setAudioSource(AudioSource.uri(Uri.parse("${widget.music.url}")));
       // AAC example: https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.aac
-      await _audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(
-          "https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3")));
+      // await _audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(
+      //     "https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3")));
     } catch (e) {
       // print("Error loading audio source: $e");
     }
