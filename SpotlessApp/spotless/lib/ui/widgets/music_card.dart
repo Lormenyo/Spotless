@@ -120,6 +120,11 @@ class RectangularMusicCard extends StatelessWidget {
   final Album music;
   const RectangularMusicCard({Key? key, required this.music}) : super(key: key);
 
+  onRectangularMusicCardPressed(Album music, BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => AlbumTracks(album: this.music)));
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Color> tileColorList = [
@@ -133,6 +138,7 @@ class RectangularMusicCard extends StatelessWidget {
       height: 65,
       width: 179,
       child: ListTile(
+        // onTap: onRectangularMusicCardPressed(music, context),
         tileColor: tileColorList.first,
         leading: CircleAvatar(
           backgroundImage: NetworkImage(music.images?[0]["url"]),
