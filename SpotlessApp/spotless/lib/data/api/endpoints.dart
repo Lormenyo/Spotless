@@ -1,6 +1,7 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:spotless/data/models/album.dart';
+import 'package:spotless/data/models/genreplaylist.dart';
 import 'package:spotless/data/models/track.dart';
 
 part 'endpoints.g.dart';
@@ -17,4 +18,7 @@ abstract class RestClient {
 
   @GET("/albumTracks/{id}")
   Future<List<Track>> getAlbumTracks(@Path("id") String id);
+
+  @GET("/genre")
+  Future<List<GenrePlaylist>> getTopGenreList();
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:spotless/data/api/apicalls.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 import 'package:spotless/ui/widgets/custom_appbars.dart';
+import 'package:spotless/ui/widgets/music_card.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -33,7 +35,37 @@ class _SearchState extends State<Search> {
             ),
           ),
           onBackPressed: onBackPressed),
-      body: Container(),
+      body: Container(
+        child: ListView(
+          children: [
+            SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: FutureBuilder(
+                    future: getAllTopGenreList(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                            ),
+                            itemCount: snapshot.data?.length ?? 0,
+                            itemBuilder: (context, index) {
+                              return GenreMusicCard(
+                                  music: snapshot.data![index]);
+                              // return SquareMusicCard(
+                              //     music: snapshot.data![index]);
+                            });
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    })),
+          ],
+        ),
+      ),
     );
   }
 

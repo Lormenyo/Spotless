@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotless/data/models/album.dart';
+import 'package:spotless/data/models/genreplaylist.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/helpers/custom_extensions.dart';
 import 'package:spotless/ui/screens/album_tracks.dart';
@@ -18,13 +18,6 @@ class SquareMusicCard extends StatelessWidget {
   void onSquareMusicCardPressed(Album music, BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => AlbumTracks(album: this.music)));
-    // NowPlaying(
-    //     music: Music(
-    //         artUrl: music.images?[0]["url"],
-    //         title: music.name ?? "",
-    //         genre: music.type ?? "",
-    //         artistName: music.artists?[0]["name"],
-    //         artistImage: kCoverArt))));
   }
 
   @override
@@ -242,6 +235,104 @@ class NowPlayingMusicCard extends StatelessWidget {
                             color: AppColors.spotlessPurple1,
                           ))),
                 ))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class GenreMusicCard extends StatelessWidget {
+  // art_url, title, artist, genre
+  final GenrePlaylist music;
+  const GenreMusicCard({Key? key, required this.music}) : super(key: key);
+
+  void onGenreMusicCardPressed(BuildContext context) {
+    // Navigator.of(context).push(MaterialPageRoute(
+    //     builder: (context) => AlbumTracks(album: this.music)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => onGenreMusicCardPressed(context),
+      child: Container(
+        height: 145,
+        width: 150,
+        padding: const EdgeInsets.all(5.0),
+        child: Stack(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                        music.icons == null
+                            ? "https://i.pravatar.cc/300"
+                            : music.icons?[0]["url"],
+                      ),
+                      fit: BoxFit.cover),
+                  borderRadius: const BorderRadius.all(Radius.circular(30.0))),
+            ),
+            Positioned(
+                bottom: 0.4,
+                left: 7,
+                // right: 5,
+                width: 126,
+                height: 53,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(17),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                    child: Container(
+                      color: Colors.grey.withOpacity(0.28),
+                    ),
+                  ),
+                )),
+            Positioned(
+              bottom: 0,
+              left: 5,
+              right: 5,
+              child: Container(
+                height: 52,
+                width: 120,
+                padding: const EdgeInsets.all(10.0),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10.0),
+                    ),
+                    gradient: LinearGradient(
+                      begin: FractionalOffset.topLeft,
+                      end: FractionalOffset.bottomRight,
+                      colors: [
+                        Color.fromRGBO(
+                          255,
+                          255,
+                          255,
+                          0.28,
+                        ),
+                        Color.fromRGBO(255, 255, 255, 0.62),
+                        Color.fromRGBO(255, 255, 255, 1.0)
+                      ],
+                      stops: [1.0, 0.5, 0.0],
+                    )),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${music.name}".truncateTo(10),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall
+                          ?.copyWith(color: Colors.white, fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
