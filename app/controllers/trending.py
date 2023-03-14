@@ -9,7 +9,3 @@ trendingNamespace = Namespace('trending', 'Trending songs related endpoints')
 class MainClass(Resource):
 	def get(self):
 		return SpotifyGeneral.getTop50Global()
-	def post(self):
-		return {
-			"status": "Posted new data"
-		}
