@@ -21,4 +21,8 @@ abstract class RestClient {
 
   @GET("/genre")
   Future<List<GenrePlaylist>> getTopGenreList();
+
+  @GET("/lyrics")
+  Future<String> getSongLyrics(
+      @Query('songtitle') String songtitle, @Query('artist') String artist);
 }

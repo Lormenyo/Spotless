@@ -34,3 +34,9 @@ Future<List<GenrePlaylist>> getAllTopGenreList() {
 
   return client.getTopGenreList();
 }
+
+Future<String> getSongLyrics(String song, String artist) {
+  logger.i('Fetching Song Lyrics');
+
+  return client.getSongLyrics(song, artist);
+}
