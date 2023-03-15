@@ -31,10 +31,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
     ambiguate(WidgetsBinding.instance)!.addObserver(this);
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle());
     _init();
-    getLyrics();
   }
-
-  void getLyrics() {}
 
   Future<void> _init() async {
     final session = await AudioSession.instance;
@@ -266,7 +263,8 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
         isDismissible: true,
         backgroundColor: Colors.transparent,
         builder: (context) {
-          return const LyricsBottomSheet();
+          return LyricsBottomSheet(
+              song: widget.music.title, artist: widget.music.artistName);
         });
   }
 }

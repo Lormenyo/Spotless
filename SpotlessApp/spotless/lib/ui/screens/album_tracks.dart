@@ -3,6 +3,7 @@ import 'package:spotless/data/api/apiCalls.dart';
 import 'package:spotless/data/models/album.dart';
 import 'package:spotless/data/models/music.dart';
 import 'package:spotless/data/models/track.dart';
+import 'package:spotless/helpers/artists.dart';
 import 'package:spotless/ui/screens/now_playing.dart';
 import 'package:spotless/ui/theme/app_colors.dart';
 
@@ -107,15 +108,5 @@ class _AlbumTracksState extends State<AlbumTracks> {
                 ?.copyWith(color: AppColors.spotlessGray3, fontSize: 12)),
       ),
     );
-  }
-
-  getArtistNames(List artists) {
-    String artistsStr = "";
-    for (var i = 0; i < artists.length; i++) {
-      i > 0
-          ? artistsStr += ", ${artists[i]['name']}"
-          : artistsStr += "${artists[i]['name']}";
-    }
-    return artistsStr;
   }
 }

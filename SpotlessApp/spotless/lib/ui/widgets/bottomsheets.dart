@@ -1,9 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:spotless/data/api/apiCalls.dart';
+import 'package:spotless/data/models/track.dart';
 
 class LyricsBottomSheet extends StatelessWidget {
-  const LyricsBottomSheet({Key? key}) : super(key: key);
+  final String song;
+  final String artist;
+  const LyricsBottomSheet({Key? key, required this.song, required this.artist})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +37,32 @@ class LyricsBottomSheet extends StatelessWidget {
                 filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
                 child: Column(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      child: Row(
-                        children: [
-                          Flexible(
-                              child: Text(
-                            "Lately, I think of you lots \n" +
-                                "'Cause my mind's in circles for you \n" +
-                                "Please connect the dots And bring me, bring me to you \n" +
-                                "'Cause you bring out the freak in me It's only for you",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineLarge
-                                ?.copyWith(height: 1.7),
-                          )),
-                        ],
-                      ),
-                    )
+                    FutureBuilder(
+                        future: getSongLyrics(song, artist),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return Container(
+                              padding: const EdgeInsets.all(20),
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                      child: Text(
+                                    "${snapshot.data}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge
+                                        ?.copyWith(height: 1.7),
+                                  )),
+                                ],
+                              ),
+                            );
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        })
                   ],
                 ),
               ),
