@@ -1,4 +1,7 @@
+import os
 from pprint import PrettyPrinter
+import re
+from bs4 import BeautifulSoup
 
 import requests
 from app.spotifyHelper import genius, sp
@@ -61,7 +64,13 @@ class SpotifySong:
         # pp.pprint(self.song)
         # print("\n-----------Artist----------\n")
         self.artist = genius.artist(self.artist_id)
-        self.lyrics = requests.get(get_scrapeops_url(self.song_url)).text
+        page = requests.get(get_scrapeops_url(self.song_url)).text
+        html = BeautifulSoup(page, 'html.parser')
+        lyrics = html.find('div', class_='Lyrics__Container-sc-1ynbvzw-5 Dzxov').get_text(separator="\n")
+        #remove identifiers like chorus, verse, etc
+        #lyrics = re.sub(r'[\(\[].*?[\)\]]', '', lyrics)
+        #remove empty lines
+        self.lyrics = lyrics
         # self.lyrics = genius.lyrics(song_id=self.song_id, song_url=self.song_url)
         # pp.pprint(self.lyrics)
         
