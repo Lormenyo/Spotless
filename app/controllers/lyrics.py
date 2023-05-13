@@ -7,6 +7,7 @@ parser.add_argument('songtitle', type=str, location='args')
 parser.add_argument('artist', type=str, location='args')
 parser.add_argument('User-Agent', location='headers')
 
+
 lyricsNamespace = Namespace('lyrics', 'Lyrics related endpoints')
 
 @lyricsNamespace.route("/")
