@@ -1,3 +1,4 @@
+from pprint import PrettyPrinter
 from app.spotifyHelper import genius, sp
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
@@ -30,18 +31,40 @@ class SpotifyGeneral:
     def getLyrics(songTitle, artist):
         song = SpotifySong(songName=songTitle, artistName=artist)
         return song.getSongLyrics()
+        # return "lyrics"
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
         self.songName = songName
-        self.artist = genius.search_artist(artistName, max_songs=1, sort="title", include_features=False)
-        self.song = genius.search_song(songName, self.artist.name)
+        songs = genius.search_songs(songName)["hits"]
+        self.song_id = 0
+        self.artist_id = 0
+        self.song_url = ""
+        # print(songs)
+        for song in songs:
+            # pp = PrettyPrinter()
+            # pp.pprint(song)
+            # print('\n')
+            if song['result']['title'].lower() == songName.lower() and song['result']['primary_artist']['name'].lower() == artistName.lower():
+                # print(f"Matched song: {song['result']['title']}")
+                self.song_id = song['result']['id']
+                self.song_url = song['result']['url']
+                self.artist_id = song['result']['primary_artist']['id']
+            # else:
+            #     print(f"false- not found: {song['result']['title']} {song['result']['primary_artist']['name']}")
+        self.song = genius.song(self.song_id)
+        # pp.pprint(self.song)
+        # print("\n-----------Artist----------\n")
+        self.artist = genius.artist(self.artist_id)
+        self.lyrics = genius.lyrics(song_id=self.song_id, song_url=self.song_url)
+        # pp.pprint(self.lyrics)
+        
 
     def getSongArtist(self,):
         return self.artist.name
 
     def getSongLyrics(self,):
-        return self.song.lyrics
+        return self.lyrics
 
     def getFullSongTranslation(self,fromLang, toLang):
         return ts.translate_text(self.song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
