@@ -1,7 +1,11 @@
 from pprint import PrettyPrinter
+
+import requests
 from app.spotifyHelper import genius, sp
 import translators as ts
 from korean_romanizer.romanizer import Romanizer
+
+from app.util.proxy import get_scrapeops_url
 
 class SpotifyGeneral:
     def __init__(self) -> None:
@@ -30,6 +34,7 @@ class SpotifyGeneral:
     @staticmethod
     def getLyrics(songTitle, artist):
         song = SpotifySong(songName=songTitle, artistName=artist)
+        
         return song.getSongLyrics()
         # return "lyrics"
 
@@ -56,7 +61,8 @@ class SpotifySong:
         # pp.pprint(self.song)
         # print("\n-----------Artist----------\n")
         self.artist = genius.artist(self.artist_id)
-        self.lyrics = genius.lyrics(song_id=self.song_id, song_url=self.song_url)
+        self.lyrics = requests.get(get_scrapeops_url(self.song_url)).text
+        # self.lyrics = genius.lyrics(song_id=self.song_id, song_url=self.song_url)
         # pp.pprint(self.lyrics)
         
 

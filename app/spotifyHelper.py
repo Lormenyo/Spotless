@@ -11,8 +11,10 @@ from decouple import config
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=config("clientId"),
                                                            client_secret=config("clientSecret")))
 
-print(f'>>>>>--------------- {config("lyricsAccessToken")}')
 genius = lyricsgenius.Genius(config("lyricsAccessToken"))
+
+
+proxyAPIKey = config("proxyAPIKey")
 
    
 
