@@ -34,7 +34,7 @@ class SpotifyGeneral:
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
         self.songName = songName
-        self.artist = genius.search_artist(artistName, max_songs=1, sort="title", include_features=True)
+        self.artist = genius.search_artist(artistName, max_songs=1, sort="title", include_features=False)
         self.song = genius.search_song(songName, self.artist.name)
 
     def getSongArtist(self,):
