@@ -131,16 +131,17 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
     return Container(
       padding: const EdgeInsets.all(20.0),
       width: MediaQuery.of(context).size.width,
-      height: 380,
+      height: 390,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
-            height: 30,
+            height: 15,
           ),
           Text(
             widget.music.title,
+            textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
                 .headlineMedium
@@ -151,6 +152,7 @@ class _NowPlayingState extends State<NowPlaying> with WidgetsBindingObserver {
           ),
           Text(
             widget.music.artistName,
+            textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium

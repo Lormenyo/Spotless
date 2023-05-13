@@ -42,13 +42,15 @@ class LyricsBottomSheet extends StatelessWidget {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.done) {
+                            String lyrics = "${snapshot.data}";
+                            lyrics = lyrics.replaceAll("\\n", "\n");
                             return Container(
                               padding: const EdgeInsets.all(20),
                               child: Row(
                                 children: [
                                   Flexible(
                                       child: Text(
-                                    "${snapshot.data}",
+                                    lyrics,
                                     style: Theme.of(context)
                                         .textTheme
                                         .headlineLarge
