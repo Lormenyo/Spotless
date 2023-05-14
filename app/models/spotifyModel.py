@@ -12,6 +12,10 @@ from korean_romanizer.romanizer import Romanizer
 
 from app.util.proxy import get_scrapeops_url
 
+HEADER = {
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Mobile Safari/537.36',
+    }
+
 class SpotifyGeneral:
     def __init__(self) -> None:
         pass
@@ -57,7 +61,9 @@ class SpotifySong:
         possibleArtistIds = []
         self.song_url = ""
 
-        artists = genius.search_artists(artistName)['sections'][0]['hits']
+        artistsResponse = requests.get('https://genius.com/api/search/artist', params={'q': artistName}, headers=HEADER).json()['response']
+      
+        artists = artistsResponse['sections'][0]['hits']
         for artist in artists:
             if artistName in artist['result']['name'].split('&')[0]:
                 possibleArtistIds.append(artist['result']['id'])
