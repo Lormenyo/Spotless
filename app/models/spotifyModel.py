@@ -2,6 +2,8 @@ import os
 from pprint import PrettyPrinter
 import re
 from bs4 import BeautifulSoup
+# from polyglot.detect import Detector
+import langid
 
 import requests
 from app.spotifyHelper import genius, sp
@@ -39,40 +41,46 @@ class SpotifyGeneral:
         song = SpotifySong(songName=songTitle, artistName=artist)
         
         return song.getSongLyrics()
-        # return "lyrics"
+    
+    @staticmethod
+    def getTranslatedLyrics(songTitle, artist):
+        song = SpotifySong(songName=songTitle, artistName=artist)
+        
+        return song.getLyricsAndTranslation()
+        
 
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
         self.songName = songName
-        songs = genius.search_songs(songName)["hits"]
         self.song_id = 0
         self.artist_id = 0
+        possibleArtistIds = []
         self.song_url = ""
-        # print(songs)
-        for song in songs:
-            # pp = PrettyPrinter()
-            # pp.pprint(song)
-            # print('\n')
-            if song['result']['title'].lower() == songName.lower() and song['result']['primary_artist']['name'].lower() == artistName.lower():
-                # print(f"Matched song: {song['result']['title']}")
-                self.song_id = song['result']['id']
-                self.song_url = song['result']['url']
-                self.artist_id = song['result']['primary_artist']['id']
-            # else:
-            #     print(f"false- not found: {song['result']['title']} {song['result']['primary_artist']['name']}")
+
+        artists = genius.search_artists(artistName)['sections'][0]['hits']
+        for artist in artists:
+            if artistName in artist['result']['name'].split('&')[0]:
+                possibleArtistIds.append(artist['result']['id'])
+
+        for artistId in possibleArtistIds:
+            artist_songs = genius.search_artist_songs(artist_id=artistId, search_term=songName)
+
+            if artist_songs['total_entries']:
+                self.song_id = artist_songs['songs'][0]['id']
+                self.artist_id = artistId
+                self.song_url = artist_songs['songs'][0]['url']
+       
+               
+                break
+      
         self.song = genius.song(self.song_id)
-        # pp.pprint(self.song)
-        # print("\n-----------Artist----------\n")
         self.artist = genius.artist(self.artist_id)
         page = requests.get(get_scrapeops_url(self.song_url)).text
+      
         html = BeautifulSoup(page, 'html.parser')
         lyrics = html.find('div', class_='Lyrics__Container-sc-1ynbvzw-5 Dzxov').get_text(separator="\n")
-        #remove identifiers like chorus, verse, etc
-        #lyrics = re.sub(r'[\(\[].*?[\)\]]', '', lyrics)
-        #remove empty lines
         self.lyrics = lyrics
-        # self.lyrics = genius.lyrics(song_id=self.song_id, song_url=self.song_url)
-        # pp.pprint(self.lyrics)
+   
         
 
     def getSongArtist(self,):
@@ -82,23 +90,27 @@ class SpotifySong:
         return self.lyrics
 
     def getFullSongTranslation(self,fromLang, toLang):
-        return ts.translate_text(self.song.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
+        return ts.translate_text(self.lyrics,from_language=fromLang, to_language=toLang, if_ignore_empty_query=False, if_ignore_limit_of_length=False, limit_of_length=5000)
 
 
-    def getLyricsAndTranslation(self,fromLang, toLang):
-        lineLyrics = self.song.lyrics.split("\n")
+    def getLyricsAndTranslation(self):
+        lang = langid.classify(self.lyrics)[0]
 
-        for line in lineLyrics:
-            print(line, '->', ts.translate_text(line,from_language=fromLang, to_language=toLang, if_ignore_empty_query=True, if_ignore_limit_of_length=False, limit_of_length=5000))
-        return
+        lineLyrics = self.lyrics.split("\n")
+        translatedLyrics = []
+
+        if lang == 'en':
+            for line in lineLyrics:
+                translatedLine = ts.translate_text(line,from_language=lang, to_language='ko', if_ignore_empty_query=True, if_ignore_limit_of_length=False, limit_of_length=5000)
+                translatedLyrics.append([line, translatedLine, Romanizer(translatedLine).romanize()])
+        else:
+            for line in lineLyrics:
+                translatedLyrics.append([line, ts.translate_text(line,from_language=lang, to_language='en', if_ignore_empty_query=True, if_ignore_limit_of_length=False, limit_of_length=5000), Romanizer(line).romanize()])
+        return translatedLyrics
 
     def getKoreanSongRomanization(self):
-        lineLyrics = self.song.lyrics.split("\n")
-        
-        for line in lineLyrics:
-            print(line, '->', Romanizer(line).romanize())
 
-        return 
+        return Romanizer(self.lyrics).romanize()
 
     def getLanguage(self):
         return

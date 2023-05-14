@@ -18,4 +18,11 @@ class MainClass(Resource):
 		artist  = request.args.get('artist', None)
 		return SpotifyGeneral.getLyrics(song, artist)
 		
+@lyricsNamespace.route("/translated")
+@lyricsNamespace.expect(parser)
+class TranslationClass(Resource):
+	def get(self):
+		song  = request.args.get('songtitle', None)
+		artist  = request.args.get('artist', None)
+		return SpotifyGeneral.getTranslatedLyrics(song, artist)
 
