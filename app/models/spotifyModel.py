@@ -1,8 +1,4 @@
-import os
-from pprint import PrettyPrinter
-import re
 from bs4 import BeautifulSoup
-# from polyglot.detect import Detector
 import langid
 
 import requests
@@ -11,10 +7,6 @@ import translators as ts
 from korean_romanizer.romanizer import Romanizer
 
 from app.util.proxy import get_scrapeops_url
-
-HEADER = {
-    'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Mobile Safari/537.36',
-    }
 
 class SpotifyGeneral:
     def __init__(self) -> None:
@@ -56,37 +48,27 @@ class SpotifyGeneral:
 class SpotifySong:
     def __init__(self, songName:str, artistName:str) -> None:
         self.songName = songName
+        songs = genius.search_songs(songName)["hits"]
         self.song_id = 0
         self.artist_id = 0
-        possibleArtistIds = []
         self.song_url = ""
+    
+        for song in songs:
+            if song['result']['title'].lower() == songName.lower() and song['result']['primary_artist']['name'].lower() == artistName.lower():
+                self.song_id = song['result']['id']
+                self.song_url = song['result']['url']
+                self.artist_id = song['result']['primary_artist']['id']
 
-        artistsResponse = requests.get('https://genius.com/api/search/artist', params={'q': artistName}, headers=HEADER).json()['response']
-      
-        artists = artistsResponse['sections'][0]['hits']
-        for artist in artists:
-            if artistName in artist['result']['name'].split('&')[0]:
-                possibleArtistIds.append(artist['result']['id'])
-
-        for artistId in possibleArtistIds:
-            artist_songs = genius.search_artist_songs(artist_id=artistId, search_term=songName)
-
-            if artist_songs['total_entries']:
-                self.song_id = artist_songs['songs'][0]['id']
-                self.artist_id = artistId
-                self.song_url = artist_songs['songs'][0]['url']
-       
-               
-                break
-      
         self.song = genius.song(self.song_id)
+
         self.artist = genius.artist(self.artist_id)
+        self.lyrics = requests.get(get_scrapeops_url(self.song_url)).text
         page = requests.get(get_scrapeops_url(self.song_url)).text
-      
         html = BeautifulSoup(page, 'html.parser')
         lyrics = html.find('div', class_='Lyrics__Container-sc-1ynbvzw-5 Dzxov').get_text(separator="\n")
+  
         self.lyrics = lyrics
-   
+
         
 
     def getSongArtist(self,):
